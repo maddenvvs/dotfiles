@@ -1,0 +1,7 @@
+#!/usr/bin/env zsh
+
+local ZSH_FILES=(".zshrc" ".zshenv")
+
+for file in "${ZSH_FILES[@]}"; do
+    ln -fs "${HOME}/.dotfiles/${file}" "${HOME}/${file}"
+done
