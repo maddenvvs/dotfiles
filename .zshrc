@@ -28,3 +28,6 @@ zinit ice depth=1; zinit light romkatv/powerlevel10k
 # Fish-like syntax highlighting.
 zinit light zdharma-continuum/fast-syntax-highlighting
 
+zinit ice from"gh-r" as"program" mv"jq* -> jq" bpick"*osx*"
+zinit light stedolan/jq
+
