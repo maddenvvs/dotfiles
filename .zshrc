@@ -1,3 +1,6 @@
+# Disable beep sounds.
+setopt nobeep
+
 # Enable Powerlevel10k instant prompt. Should stay close to the top of ~/.zshrc.
 # Initialization code that may require console input (password prompts, [y/n]
 # confirmations, etc.) must go above this block; everything else may go below.
@@ -25,7 +28,15 @@ zi light z-shell/z-a-meta-plugins
 zi light @annexes
 
 # Install Powerlevel10k theme.
+# TODO: Automate font installation.
 zi light @romkatv
+
+# Install fzf with key bindings.
+zi pack"bgn-binary+keys" for fzf
+# Load fzf Tab fuzzy completion as a snippet instead of completion.
+# fzf fuzzy completion - https://raw.githubusercontent.com/junegunn/fzf/master/shell/completion.zsh
+# Bug in Zi fzf package - https://github.com/z-shell/fzf/blob/main/package.json#L112
+zi snippet https://raw.githubusercontent.com/junegunn/fzf/master/shell/completion.zsh
 
 # Install F-Sy-H, zsh-autosuggestions, zsh-completions.
 # Probably, should be the last module.
