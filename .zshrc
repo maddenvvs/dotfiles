@@ -1,3 +1,5 @@
+# TODO: automate scheduled update and self-update.
+# TODO: extract personal configuration into separate package.
 # Disable beep sounds.
 setopt nobeep
 
