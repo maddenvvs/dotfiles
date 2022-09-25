@@ -10,6 +10,9 @@ setopt hist_verify
 # Choose Emacs command line editing style.
 bindkey -e
 
+# Reload zsh configuration and restart zsh shell.
+alias reload="zi update -q personal && exec zsh"
+
 # Load machine-specific zsh configuration.
 LOCAL_ZSHRC="${HOME}/.zshrc.local"
 [[ -f "${LOCAL_ZSHRC}" ]] && source "${LOCAL_ZSHRC}"
