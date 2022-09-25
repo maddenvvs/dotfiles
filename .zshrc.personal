@@ -15,8 +15,14 @@ bindkey -e
 # highlighting doesn't work properly.
 bindkey '\el' forward-char
 
-# Reload zsh configuration and restart zsh shell.
-alias reload="zi update -q personal && exec zsh"
+# Common ls alias.
+alias l='ls -lAhFG'
+
+# Show disk usage of a current directory.
+alias duc='du -sh $(ls -A) | sort -h -r'
+
+alias zshrc="${=EDITOR} ${ZDOTDIR:-$HOME}/.zshrc"
+alias zshrc-personal="${=EDITOR} ${ZDOTDIR:-$HOME}/.dotfiles/.zshrc.personal"
 
 # Load machine-specific zsh configuration.
 LOCAL_ZSHRC="${HOME}/.zshrc.local"
