@@ -162,7 +162,7 @@
 	<key>BlinkText</key>
 	<true/>
 	<key>CursorBlink</key>
-	<false/>
+	<true/>
 	<key>CursorColor</key>
 	<data>
 	YnBsaXN0MDDUAQIDBAUGBwpYJHZlcnNpb25ZJGFyY2hpdmVyVCR0b3BYJG9iamVjdHMS
@@ -172,6 +172,8 @@
 	ohYYWE5TT2JqZWN0CBEaJCkyN0lMUVNXXWRqd36nqauwu8TMzwAAAAAAAAEBAAAAAAAA
 	ABkAAAAAAAAAAAAAAAAAAADY
 	</data>
+	<key>CursorType</key>
+	<integer>2</integer>
 	<key>DisableANSIColor</key>
 	<false/>
 	<key>Font</key>
