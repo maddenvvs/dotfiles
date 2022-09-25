@@ -1,0 +1,16 @@
+# Don't beep on error.
+setopt no_beep
+
+# Use cd by typing directory name if it's not a command.
+setopt auto_cd
+
+# Do not execute a command immediately upon history expansion.
+setopt hist_verify
+
+# Choose Emacs command line editing style.
+bindkey -e
+
+# Load machine-specific zsh configuration.
+LOCAL_ZSHRC="${HOME}/.zshrc.local"
+[[ -f "${LOCAL_ZSHRC}" ]] && source "${LOCAL_ZSHRC}"
+

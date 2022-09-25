@@ -1,7 +1,4 @@
 # TODO: automate scheduled update and self-update.
-# TODO: extract personal configuration into separate package.
-# Disable beep sounds.
-setopt nobeep
 
 # Enable Powerlevel10k instant prompt. Should stay close to the top of ~/.zshrc.
 # Initialization code that may require console input (password prompts, [y/n]
@@ -43,4 +40,7 @@ zi snippet https://raw.githubusercontent.com/junegunn/fzf/master/shell/completio
 # Install F-Sy-H, zsh-autosuggestions, zsh-completions.
 # Probably, should be the last module.
 zi light @zsh-users+fast
+
+# Include my personal settings for zsh.
+source "${HOME}/.dotfiles/.zshrc.personal"
 
