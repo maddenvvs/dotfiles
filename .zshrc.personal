@@ -10,6 +10,11 @@ setopt hist_verify
 # Choose Emacs command line editing style.
 bindkey -e
 
+# Bind Ctrl+Space to accept the current suggestion from zsh-autosuggestions.
+# "bindkey '^ ' autosuggest-accept" doesn't work properly, because fast syntax
+# highlighting doesn't work properly.
+bindkey '\el' forward-char
+
 # Reload zsh configuration and restart zsh shell.
 alias reload="zi update -q personal && exec zsh"
 
