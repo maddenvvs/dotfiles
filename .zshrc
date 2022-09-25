@@ -1,4 +1,4 @@
-# TODO: automate scheduled update and self-update.
+# TODO: automate scheduled "zi update" and "zi self-update".
 
 # Enable Powerlevel10k instant prompt. Should stay close to the top of ~/.zshrc.
 # Initialization code that may require console input (password prompts, [y/n]
@@ -42,5 +42,5 @@ zi snippet https://raw.githubusercontent.com/junegunn/fzf/master/shell/completio
 zi light @zsh-users+fast
 
 # Include my personal settings for zsh.
-source "${HOME}/.dotfiles/.zshrc.personal"
+zi ice id-as"personal"; zi snippet "${HOME}/.dotfiles/.zshrc.personal"
 
