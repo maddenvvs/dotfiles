@@ -7,6 +7,11 @@ setopt auto_cd
 # Do not execute a command immediately upon history expansion.
 setopt hist_verify
 
+# Adjust history size and path.
+HISTFILE=~/.zsh_history
+HISTSIZE=10000
+SAVEHIST=10000
+
 # Choose Emacs command line editing style.
 bindkey -e
 
