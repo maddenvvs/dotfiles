@@ -20,18 +20,34 @@ bindkey -e
 # highlighting doesn't work properly.
 bindkey '\el' forward-char
 
+###############################################################################
+#
+# Aliases
+#
+###############################################################################
+
+# Detect which `ls` flavor is in use.
+if ls --color > /dev/null 2>&1; then # GNU `ls`
+    colorflag="--color"
+else # macOS `ls`
+    colorflag="-G"
+fi
+
 # Common ls alias.
-alias l='ls -lAhFG'
+alias l="ls -lAhF ${colorflag}"
+
+# Open default editor (vim) fast.
+alias e="${EDITOR}"
 
 # Show disk usage of a current directory.
 alias duc='du -sh $(ls -A) | sort -h -r'
 
 # Dotfiles management.
-alias dotfiles="cd ${HOME}/.dotfiles"
-alias zshrc="${=EDITOR} ${ZDOTDIR:-$HOME}/.zshrc"
-alias zshrc-personal="${=EDITOR} ${ZDOTDIR:-$HOME}/.dotfiles/.zshrc.personal"
+alias dtf="cd ${HOME}/.dotfiles"
+alias zrc="${=EDITOR} ${ZDOTDIR:-$HOME}/.zshrc"
+alias zrcp="${=EDITOR} ${ZDOTDIR:-$HOME}/.dotfiles/.zshrc.personal"
+alias zu='zi update -p'
 
 # Load machine-specific zsh configuration.
-LOCAL_ZSHRC="${HOME}/.zshrc.local"
-[[ -f "${LOCAL_ZSHRC}" ]] && source "${LOCAL_ZSHRC}"
+[[ -f ~/.zshrc.local ]] && source ~/.zshrc.local
 
