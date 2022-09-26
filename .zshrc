@@ -32,15 +32,16 @@ zi light @romkatv
 
 # Install fzf with key bindings.
 zi pack"bgn-binary+keys" for fzf
-# Load fzf Tab fuzzy completion as a snippet instead of completion.
-# fzf fuzzy completion - https://raw.githubusercontent.com/junegunn/fzf/master/shell/completion.zsh
-# Bug in Zi fzf package - https://github.com/z-shell/fzf/blob/main/package.json#L112
-zi snippet https://raw.githubusercontent.com/junegunn/fzf/master/shell/completion.zsh
 
 # Install F-Sy-H, zsh-autosuggestions, zsh-completions.
-# Probably, should be the last module.
 zi light @zsh-users+fast
 
 # Include my personal settings for zsh.
 zi ice id-as"personal"; zi snippet "${HOME}/.dotfiles/.zshrc.personal"
+
+# Load fzf Tab fuzzy completion as a snippet instead of completion.
+# TODO: for some reason, this module should be loaded last. Figure out why.
+# fzf fuzzy completion - https://raw.githubusercontent.com/junegunn/fzf/master/shell/completion.zsh
+# Bug in Zi fzf package - https://github.com/z-shell/fzf/blob/main/package.json#L112
+zi snippet https://raw.githubusercontent.com/junegunn/fzf/master/shell/completion.zsh
 
