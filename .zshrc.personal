@@ -26,6 +26,8 @@ alias l='ls -lAhFG'
 # Show disk usage of a current directory.
 alias duc='du -sh $(ls -A) | sort -h -r'
 
+# Dotfiles management.
+alias dotfiles="cd ${HOME}/.dotfiles"
 alias zshrc="${=EDITOR} ${ZDOTDIR:-$HOME}/.zshrc"
 alias zshrc-personal="${=EDITOR} ${ZDOTDIR:-$HOME}/.dotfiles/.zshrc.personal"
 
