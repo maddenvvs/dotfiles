@@ -46,6 +46,8 @@ alias duc='du -sh $(ls -A) | sort -h -r'
 alias dtf="cd ${HOME}/.dotfiles"
 alias zrc="${=EDITOR} ${ZDOTDIR:-$HOME}/.zshrc"
 alias zrcp="${=EDITOR} ${ZDOTDIR:-$HOME}/.dotfiles/.zshrc.personal"
+
+# Alias for Zi plugin update.
 alias zu='zi update -p'
 
 # Load machine-specific zsh configuration.
