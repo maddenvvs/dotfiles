@@ -7,6 +7,67 @@ if [[ -r "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh" ]]
   source "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh"
 fi
 
+
+###############################################################################
+# Options
+# https://zsh.sourceforge.io/Doc/Release/Options.html
+###############################################################################
+
+# Don't beep on error.
+setopt no_beep
+
+# Use cd by typing directory name if it's not a command.
+setopt auto_cd
+
+# Configure history.
+HISTFILE="$HOME/.zsh_history"
+HISTSIZE=50000
+SAVEHIST=10000
+
+# Do not execute a command immediately upon history expansion.
+setopt hist_verify
+
+
+###############################################################################
+# Bindkeys
+###############################################################################
+
+# Choose Emacs command line editing style.
+bindkey -e
+
+
+###############################################################################
+# Aliases
+###############################################################################
+
+# Detect which `ls` flavor is in use.
+if ls --color > /dev/null 2>&1; then # GNU `ls`
+    colorflag="--color"
+else # macOS `ls`
+    colorflag="-G"
+fi
+
+# Common ls alias.
+alias l="ls -lAhF ${colorflag}"
+
+# Open default editor (vim) fast.
+alias v="${EDITOR}"
+
+# Show disk usage of a current directory.
+alias duc='du -sh $(ls -A) | sort -h -r'
+
+# Dotfiles management.
+alias dot="cd ${HOME}/.dotfiles"
+alias zrc="${=EDITOR} ${ZDOTDIR:-$HOME}/.zshrc"
+
+# Alias for Zi plugin update.
+alias zu='zi update -p'
+
+
+###############################################################################
+# Plugins
+###############################################################################
+
 # Zi-generated installation script.
 if [[ ! -f $HOME/.zi/bin/zi.zsh ]]; then
   print -P "%F{33}▓▒░ %F{160}Installing (%F{33}z-shell/zi%F{160})…%f"
@@ -36,12 +97,17 @@ zi pack"bgn-binary+keys" for fzf
 # Install F-Sy-H, zsh-autosuggestions, zsh-completions.
 zi light @zsh-users+fast
 
-# Include my personal settings for zsh.
-zi ice id-as"personal"; zi snippet "${HOME}/.dotfiles/.zshrc.personal"
-
 # Load fzf Tab fuzzy completion as a snippet instead of completion.
 # TODO: for some reason, this module should be loaded last. Figure out why.
 # fzf fuzzy completion - https://raw.githubusercontent.com/junegunn/fzf/master/shell/completion.zsh
 # Bug in Zi fzf package - https://github.com/z-shell/fzf/blob/main/package.json#L112
 zi snippet https://raw.githubusercontent.com/junegunn/fzf/master/shell/completion.zsh
+
+
+###############################################################################
+# Misc
+###############################################################################
+
+# Load machine-specific zsh configuration.
+[[ -f ~/.zshrc.local ]] && source ~/.zshrc.local
 
