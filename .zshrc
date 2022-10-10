@@ -24,6 +24,16 @@ HISTFILE="$HOME/.zsh_history"
 HISTSIZE=50000
 SAVEHIST=10000
 
+
+# Store beginning timestamp and duration of each command.
+setopt extended_history
+
+# Do not store a command if it is a duplicate of the previous one.
+setopt hist_ignore_dups
+
+# Share command history between shells.
+setopt share_history
+
 # Do not execute a command immediately upon history expansion.
 setopt hist_verify
 
