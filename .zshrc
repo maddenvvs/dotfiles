@@ -24,7 +24,6 @@ HISTFILE="$HOME/.zsh_history"
 HISTSIZE=50000
 SAVEHIST=10000
 
-
 # Store beginning timestamp and duration of each command.
 setopt extended_history
 
@@ -107,18 +106,18 @@ zi light @annexes
 # TODO: Automate font installation.
 zi light @romkatv
 
-# Install fzf with key bindings.
-zi pack"bgn-binary+keys" for fzf
-
-# Install F-Sy-H, zsh-autosuggestions, zsh-completions.
-zi light @zsh-users+fast
-
 # Docker CLI completion.
 zi ice as"completion"
 zi snippet https://github.com/docker/cli/blob/master/contrib/completion/zsh/_docker
 
+# Install fzf with key bindings.
+zi pack"bgn-binary+keys" for fzf
+
 # Replace zsh's default completion selection menu with fzf.
 zinit light Aloxaf/fzf-tab
+
+# Install F-Sy-H, zsh-autosuggestions, zsh-completions.
+zi light @zsh-users+fast
 
 # Load fzf Tab fuzzy completion as a snippet instead of completion.
 # TODO: for some reason, this module should be loaded last. Figure out why.
