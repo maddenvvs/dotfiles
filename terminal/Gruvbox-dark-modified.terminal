@@ -157,6 +157,8 @@
 	cqIWGFhOU09iamVjdAgRGiQpMjdJTFFTV11kand+qKqssbzFzdAAAAAAAAABAQAAAAAA
 	AAAZAAAAAAAAAAAAAAAAAAAA2Q==
 	</data>
+	<key>Bell</key>
+	<false/>
 	<key>BellBounceCritical</key>
 	<false/>
 	<key>BlinkText</key>
@@ -173,17 +175,17 @@
 	ABkAAAAAAAAAAAAAAAAAAADY
 	</data>
 	<key>CursorType</key>
-	<integer>2</integer>
+	<integer>0</integer>
 	<key>DisableANSIColor</key>
 	<false/>
 	<key>Font</key>
 	<data>
 	YnBsaXN0MDDUAQIDBAUGBwpYJHZlcnNpb25ZJGFyY2hpdmVyVCR0b3BYJG9iamVjdHMS
 	AAGGoF8QD05TS2V5ZWRBcmNoaXZlctEICVRyb290gAGkCwwVFlUkbnVsbNQNDg8QERIT
-	FFZOU1NpemVYTlNmRmxhZ3NWTlNOYW1lViRjbGFzcyNALgAAAAAAABAQgAKAA18QJkpl
-	dEJyYWluc01vbm9OZXJkRm9udENvbXBsZXRlTS1SZWd1bGFy0hcYGRpaJGNsYXNzbmFt
-	ZVgkY2xhc3Nlc1ZOU0ZvbnSiGRtYTlNPYmplY3QIERokKTI3SUxRU1heZ253foWOkJKU
-	vcLN1t3gAAAAAAAAAQEAAAAAAAAAHAAAAAAAAAAAAAAAAAAAAOk=
+	FFZOU1NpemVYTlNmRmxhZ3NWTlNOYW1lViRjbGFzcyNALgAAAAAAABAQgAKAA18QKEpl
+	dEJyYWluc01vbm9OTE5lcmRGb250Q29tcGxldGVNLVJlZ3VsYXLSFxgZGlokY2xhc3Nu
+	YW1lWCRjbGFzc2VzVk5TRm9udKIZG1hOU09iamVjdAgRGiQpMjdJTFFTWF5nbnd+hY6Q
+	kpS/xM/Y3+IAAAAAAAABAQAAAAAAAAAcAAAAAAAAAAAAAAAAAAAA6w==
 	</data>
 	<key>FontAntialias</key>
 	<true/>
@@ -242,6 +244,10 @@
 	<true/>
 	<key>UseBrightBold</key>
 	<true/>
+	<key>VisualBell</key>
+	<false/>
+	<key>VisualBellOnlyWhenMuted</key>
+	<false/>
 	<key>WindowTitle</key>
 	<string>~</string>
 	<key>columnCount</key>
@@ -254,5 +260,7 @@
 	<integer>2</integer>
 	<key>type</key>
 	<string>Window Settings</string>
+	<key>useOptionAsMetaKey</key>
+	<false/>
 </dict>
 </plist>

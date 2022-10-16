@@ -1,4 +1,5 @@
 # TODO: automate scheduled "zi update" and "zi self-update".
+# TODO: set color scheme
 
 # Enable Powerlevel10k instant prompt. Should stay close to the top of ~/.zshrc.
 # Initialization code that may require console input (password prompts, [y/n]
@@ -102,8 +103,30 @@ zi light z-shell/z-a-meta-plugins
 # Install auxiliary modules required for Zi itself.
 zi light @annexes
 
+# Install JetBrains font.
+zi ice if"[[ -d ${HOME}/.fonts/ttf ]] && [[ $OSTYPE = linux* ]]" \
+  id-as"jetbrains-font-linux" \
+  from"gh-r" \
+  bpick"JetBrainsMono.zip" \
+  extract \
+  nocompile \
+  depth"1" \
+  atclone="rm -f *Windows*; mv -vf *.ttf ${HOME}/.fonts/ttf/; fc-cache -v -f" \
+  atpull"%atclone"
+zi light ryanoasis/nerd-fonts
+
+zi ice if"[[ -d ${HOME}/Library/Fonts ]] && [[ $OSTYPE = darwin* ]]" \
+  id-as"jetbrains-font" \
+  from"gh-r" \
+  bpick"JetBrainsMono.zip" \
+  extract \
+  nocompile \
+  depth"1" \
+  atclone="rm -f *Windows*; mv -vf *.ttf ${HOME}/Library/Fonts/" \
+  atpull"%atclone"
+zi light ryanoasis/nerd-fonts
+
 # Install Powerlevel10k theme.
-# TODO: Automate font installation.
 zi light @romkatv
 
 # Docker CLI completion.
