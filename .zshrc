@@ -73,7 +73,7 @@ alias v="${EDITOR}"
 alias duc='du -sh $(ls -A) | sort -h -r'
 
 # Dotfiles management.
-alias dot="cd ${HOME}/.dotfiles"
+alias dtf="cd ${HOME}/.dotfiles"
 alias zrc="${=EDITOR} ${ZDOTDIR:-$HOME}/.zshrc"
 
 # Alias for Zi plugin update.
