@@ -140,6 +140,8 @@ zi pack"bgn-binary+keys" for fzf
 zi light Aloxaf/fzf-tab
 
 # Install F-Sy-H, zsh-autosuggestions, zsh-completions.
+# TODO: probably, these plugins should be the last ones to install.
+# It is somehow related to atinit"zicompinit; zicdreplay" combination in F-Sy-H
 zi light @zsh-users+fast
 
 # Load fzf Tab fuzzy completion as a snippet instead of completion.
