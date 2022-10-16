@@ -114,7 +114,7 @@ zi snippet https://github.com/docker/cli/blob/master/contrib/completion/zsh/_doc
 zi pack"bgn-binary+keys" for fzf
 
 # Replace zsh's default completion selection menu with fzf.
-zinit light Aloxaf/fzf-tab
+zi light Aloxaf/fzf-tab
 
 # Install F-Sy-H, zsh-autosuggestions, zsh-completions.
 zi light @zsh-users+fast
