@@ -97,7 +97,7 @@ autoload -Uz _zi
 (( ${+_comps} )) && _comps[zi]=_zi
 
 # Add Meta Plugins Zi Annex.
-#https://wiki.zshell.dev/ecosystem/annexes/meta-plugins
+# https://wiki.zshell.dev/ecosystem/annexes/meta-plugins
 zi light z-shell/z-a-meta-plugins
 
 # Install auxiliary modules required for Zi itself.
@@ -113,11 +113,19 @@ zi pack"bgn-binary+keys" for fzf
 # Install F-Sy-H, zsh-autosuggestions, zsh-completions.
 zi light @zsh-users+fast
 
+# Docker CLI completion.
+zi ice as"completion"
+zi snippet https://github.com/docker/cli/blob/master/contrib/completion/zsh/_docker
+
+# Replace zsh's default completion selection menu with fzf.
+zinit light Aloxaf/fzf-tab
+
 # Load fzf Tab fuzzy completion as a snippet instead of completion.
 # TODO: for some reason, this module should be loaded last. Figure out why.
 # fzf fuzzy completion - https://raw.githubusercontent.com/junegunn/fzf/master/shell/completion.zsh
 # Bug in Zi fzf package - https://github.com/z-shell/fzf/blob/main/package.json#L112
-zi snippet https://raw.githubusercontent.com/junegunn/fzf/master/shell/completion.zsh
+# Temporary disable fzf tab completion feature in favor of fzf-tab.
+# zi snippet https://raw.githubusercontent.com/junegunn/fzf/master/shell/completion.zsh
 
 
 ###############################################################################
