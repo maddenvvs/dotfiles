@@ -77,7 +77,7 @@ alias dtf="cd ${HOME}/.dotfiles"
 alias zrc="${=EDITOR} ${ZDOTDIR:-$HOME}/.zshrc"
 
 # Alias for Zi plugin update.
-alias zu='zi update -p'
+alias zu='zi self-update && zi update --parallel --reset --all'
 
 
 ###############################################################################
