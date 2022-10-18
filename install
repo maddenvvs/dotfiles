@@ -6,6 +6,12 @@ for file in "${ZSH_FILES[@]}"; do
     ln -fs "${HOME}/.dotfiles/${file}" "${HOME}/${file}"
 done
 
-mkdir -p "${HOME}/.config/kitty"
-ln -fs "${HOME}/.dotfiles/kitty/kitty.conf" "${HOME}/.config/kitty/kitty.conf"
+readonly KITTY_DOTFILES="${HOME}/.dotfiles/kitty"
+readonly KITTY_CONFIG="${HOME}/.config/kitty"
+readonly KITTY_FILES=("kitty.conf" "current-theme.conf")
+
+mkdir -p "${KITTY_CONFIG}"
+for file in "${KITTY_FILES[@]}"; do
+    ln -fs "${KITTY_DOTFILES}/${file}" "${KITTY_CONFIG}/${file}"
+done
 
