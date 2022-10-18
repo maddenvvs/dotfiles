@@ -1,7 +1,11 @@
 #!/usr/bin/env zsh
 
-local ZSH_FILES=(".zshrc" ".zshenv" ".p10k.zsh")
+readonly ZSH_FILES=(".zshrc" ".zshenv" ".p10k.zsh")
 
 for file in "${ZSH_FILES[@]}"; do
     ln -fs "${HOME}/.dotfiles/${file}" "${HOME}/${file}"
 done
+
+mkdir -p "${HOME}/.config/kitty"
+ln -fs "${HOME}/.dotfiles/kitty/kitty.conf" "${HOME}/.config/kitty/kitty.conf"
+
