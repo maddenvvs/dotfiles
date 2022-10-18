@@ -165,17 +165,20 @@ zi pack"bgn-binary+keys" for fzf
 # Replace zsh's default completion selection menu with fzf.
 zi light Aloxaf/fzf-tab
 
-# Install F-Sy-H, zsh-autosuggestions, zsh-completions.
-# TODO: probably, these plugins should be the last ones to install.
-# It is somehow related to atinit"zicompinit; zicdreplay" combination in F-Sy-H
-zi light @zsh-users+fast
+# Install zsh-autosuggestions, zsh-completions, F-Sy-H.
+# These plugins can be installed like "zi light @zsh-users+fast", but I wanted
+# to have a different theme for F-Sy-H ("default" instead of "z-shell").
+# Ice configurations were taken from meta plugin definition:
+# https://github.com/z-shell/z-a-meta-plugins/blob/main/z-a-meta-plugins.plugin.zsh
+zi ice pick"/dev/null"
+zi light zsh-users/zsh-completions
 
-# Load fzf Tab fuzzy completion as a snippet instead of completion.
-# TODO: for some reason, this module should be loaded last. Figure out why.
-# fzf fuzzy completion - https://raw.githubusercontent.com/junegunn/fzf/master/shell/completion.zsh
-# Bug in Zi fzf package - https://github.com/z-shell/fzf/blob/main/package.json#L112
-# Temporary disable fzf tab completion feature in favor of fzf-tab.
-# zi snippet https://raw.githubusercontent.com/junegunn/fzf/master/shell/completion.zsh
+zi ice atload'_zsh_autosuggest_start;'
+zi light zsh-users/zsh-autosuggestions
+
+zi ice atinit"ZI[COMPINIT_OPTS]=-C; zicompinit; zicdreplay;" \
+       atload"fast-theme default &>/dev/null;"
+zi light z-shell/F-Sy-H
 
 
 ###############################################################################
