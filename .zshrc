@@ -15,27 +15,53 @@ fi
 ###############################################################################
 
 # Don't beep on error.
-setopt no_beep
+setopt NO_BEEP
 
 # Use cd by typing directory name if it's not a command.
-setopt auto_cd
+setopt AUTO_CD
 
 # Configure history.
 HISTFILE="$HOME/.zsh_history"
 HISTSIZE=50000
 SAVEHIST=10000
 
-# Store beginning timestamp and duration of each command.
-setopt extended_history
+# The following parameters were taken from
+# https://github.com/rothgar/mastering-zsh/blob/master/docs/config/history.md
+# Write the history file in the ':start:elapsed;command' format.
+setopt EXTENDED_HISTORY          
 
-# Do not store a command if it is a duplicate of the previous one.
-setopt hist_ignore_dups
+# Write to the history file immediately, not when the shell exits.
+setopt INC_APPEND_HISTORY        
 
-# Share command history between shells.
-setopt share_history
+# Share history between all sessions.
+setopt SHARE_HISTORY             
 
-# Do not execute a command immediately upon history expansion.
-setopt hist_verify
+# Expire a duplicate event first when trimming history.
+setopt HIST_EXPIRE_DUPS_FIRST    
+
+# Do not record an event that was just recorded again.
+setopt HIST_IGNORE_DUPS          
+
+# Delete an old recorded event if a new event is a duplicate.
+setopt HIST_IGNORE_ALL_DUPS      
+
+# Do not display a previously found event.
+setopt HIST_FIND_NO_DUPS         
+
+# Do not record an event starting with a space.
+setopt HIST_IGNORE_SPACE         
+
+# Do not write a duplicate event to the history file.
+setopt HIST_SAVE_NO_DUPS         
+
+# Do not execute immediately upon history expansion.
+setopt HIST_VERIFY               
+
+# Append to history file.
+setopt APPEND_HISTORY            
+
+# Don't store history commands.
+setopt HIST_NO_STORE             
 
 
 ###############################################################################
