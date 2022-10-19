@@ -93,14 +93,11 @@ fi
 # Common ls alias.
 alias l="ls -lAhF ${colorflag}"
 
-# Open default editor (vim) fast.
-alias v="${EDITOR}"
-
 # Show disk usage of a current directory.
 alias duc='du -sh $(ls -A) | sort -h -r'
 
 # Dotfiles management.
-alias dtf="cd ${HOME}/.dotfiles"
+alias dtf="cd ${HOME}/.config/dotfiles"
 alias zrc="${=EDITOR} ${ZDOTDIR:-$HOME}/.zshrc"
 
 # Alias for Zi plugin update.
@@ -154,7 +151,10 @@ zi ice if"[[ -d ${HOME}/Library/Fonts ]] && [[ $OSTYPE = darwin* ]]" \
 zi light ryanoasis/nerd-fonts
 
 # Install Powerlevel10k theme.
-zi light @romkatv
+zi ice atinit'POWERLEVEL9K_DISABLE_CONFIGURATION_WIZARD=true' \
+       atload"[[ ! -f ${ZDOTDIR}/.p10k.zsh ]] || source ${ZDOTDIR}/.p10k.zsh" \
+       depth=1 nocd
+zi light romkatv/powerlevel10k
 
 # Docker CLI completion.
 zi ice as"completion"
@@ -187,5 +187,6 @@ zi light z-shell/F-Sy-H
 ###############################################################################
 
 # Load machine-specific zsh configuration.
-[[ -f ~/.zshrc.local ]] && source ~/.zshrc.local
+readonly ZSHRC_LOCAL="${HOME}/.zshrc.local"
+[[ -f "${ZSHRC_LOCAL}" ]] && source "${ZSHRC_LOCAL}"
 

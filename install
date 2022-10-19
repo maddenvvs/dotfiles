@@ -1,13 +1,19 @@
 #!/usr/bin/env zsh
 
+readonly CONFIG_FOLDER="${HOME}/.config"
+readonly DOTFILES="${CONFIG_FOLDER}/dotfiles"
+
+readonly ZSH_DOTFILES="${DOTFILES}/zsh"
+readonly ZSH_CONFIG="${CONFIG_FOLDER}/zsh"
 readonly ZSH_FILES=(".zshrc" ".zshenv" ".p10k.zsh")
 
-for file in "${ZSH_FILES[@]}"; do
-    ln -fs "${HOME}/.dotfiles/${file}" "${HOME}/${file}"
-done
+mkdir -p "${ZSH_CONFIG}"
+ln -fs "${ZSH_DOTFILES}/.zshenv" "${HOME}/.zshenv"
+ln -fs "${ZSH_DOTFILES}/.p10k.zsh" "${ZSH_CONFIG}/.p10k.zsh"
+ln -fs "${ZSH_DOTFILES}/.zshrc" "${ZSH_CONFIG}/.zshrc"
 
-readonly KITTY_DOTFILES="${HOME}/.dotfiles/kitty"
-readonly KITTY_CONFIG="${HOME}/.config/kitty"
+readonly KITTY_DOTFILES="${DOTFILES}/kitty"
+readonly KITTY_CONFIG="${CONFIG_FOLDER}/kitty"
 readonly KITTY_FILES=("kitty.conf" "current-theme.conf")
 
 mkdir -p "${KITTY_CONFIG}"
