@@ -85,13 +85,11 @@ bindkey -M emacs '^[[1;9D' backward-word
 ###############################################################################
 
 # Detect which `ls` flavor is in use.
-if ls --color > /dev/null 2>&1; then # GNU `ls`
+if ls --color &>/dev/null; then # GNU `ls`
     colorflag="--color"
 else # macOS `ls`
     colorflag="-G"
 fi
-
-# Common ls alias.
 alias l="ls -lAhF ${colorflag}"
 
 # Show disk usage of a current directory.
