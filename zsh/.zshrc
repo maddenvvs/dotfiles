@@ -71,11 +71,13 @@ setopt HIST_NO_STORE
 # Choose Emacs command line editing style.
 bindkey -e
 
-# [Ctrl-RightArrow] - move forward one word
+# [Ctrl+RightArrow or Cmd+RightArrow] - move forward one word.
 bindkey -M emacs '^[[1;5C' forward-word
+bindkey -M emacs '^[[1;9C' forward-word
 
-# [Ctrl-LeftArrow] - move backward one word
+# [Ctrl+LeftArrow or Cmd+LeftArrow] - move backward one word.
 bindkey -M emacs '^[[1;5D' backward-word
+bindkey -M emacs '^[[1;9D' backward-word
 
 
 ###############################################################################
