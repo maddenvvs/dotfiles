@@ -1,6 +1,5 @@
 # TODO: automate scheduled "zi update" and "zi self-update".
 # TODO: find a way how to automate kitty installation/update.
-# TODO: move Zi to .config/.local folder.
 
 # Enable Powerlevel10k instant prompt. Should stay close to the top of ~/.zshrc.
 # Initialization code that may require console input (password prompts, [y/n]
@@ -109,16 +108,18 @@ alias zu='zi self-update && zi update --parallel --reset --all'
 ###############################################################################
 
 # Zi-generated installation script.
-if [[ ! -f $HOME/.zi/bin/zi.zsh ]]; then
+if [[ ! -f $ZDOTDIR/.zi/bin/zi.zsh ]]; then
   print -P "%F{33}▓▒░ %F{160}Installing (%F{33}z-shell/zi%F{160})…%f"
-  command mkdir -p "$HOME/.zi" && command chmod go-rwX "$HOME/.zi"
-  command git clone -q --depth=1 --branch "main" https://github.com/z-shell/zi "$HOME/.zi/bin" && \
+  command mkdir -p "$ZDOTDIR/.zi" && command chmod go-rwX "$ZDOTDIR/.zi"
+  command git clone -q --depth=1 --branch "main" https://github.com/z-shell/zi "$ZDOTDIR/.zi/bin" && \
     print -P "%F{33}▓▒░ %F{34}Installation successful.%f%b" || \
     print -P "%F{160}▓▒░ The clone has failed.%f%b"
 fi
-source "$HOME/.zi/bin/zi.zsh"
+source "$ZDOTDIR/.zi/bin/zi.zsh"
 autoload -Uz _zi
 (( ${+_comps} )) && _comps[zi]=_zi
+# TODO: should the following line be uncommented?
+# zicompinit # <- https://wiki.zshell.dev/docs/guides/commands
 
 # Add Meta Plugins Zi Annex.
 # https://wiki.zshell.dev/ecosystem/annexes/meta-plugins
