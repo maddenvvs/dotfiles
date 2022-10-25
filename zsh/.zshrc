@@ -1,6 +1,3 @@
-# TODO: automate scheduled "zi update" and "zi self-update".
-# TODO: find a way how to automate kitty installation/update.
-
 # Enable Powerlevel10k instant prompt. Should stay close to the top of ~/.zshrc.
 # Initialization code that may require console input (password prompts, [y/n]
 # confirmations, etc.) must go above this block; everything else may go below.
