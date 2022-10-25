@@ -62,7 +62,7 @@ endif
 " Shorter update time than the 4000ms default, for async vim operations.
 set updatetime=2000
 
-" Disable --INSERT-- which is not necessary, because vim-airline already 
+" Disable --INSERT-- which is not necessary, because vim-airline already
 " displays it.
 set noshowmode
 
@@ -72,7 +72,7 @@ set splitbelow splitright
 " Enable custom theme.
 " Vim always reads .vimrc file first and after that starts to load plugins. We
 " use autocmd VimEnter to make sure that all plugins are loaded completely and
-" then use gruvbox. ++nested is used to allow automatic filetype detection. 
+" then use gruvbox. ++nested is used to allow automatic filetype detection.
 autocmd VimEnter * ++nested call ConfigureGruvboxTheme()
 
 function ConfigureGruvboxTheme()
