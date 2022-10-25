@@ -21,6 +21,8 @@ function _install_folder() {
   done
 }
 
+# Pull all registered git submodules.
+git submodule update --init --recursive
 
 for folder in "${INSTALL_FOLDERS[@]}"; do
   _install_folder "${folder}"
