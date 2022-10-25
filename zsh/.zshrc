@@ -94,7 +94,7 @@ alias duc='du -sh $(ls -A) | sort -h -r'
 
 # Dotfiles management.
 alias dtf="cd ${HOME}/.config/dotfiles"
-alias zrc="${=EDITOR} ${ZDOTDIR}/.zshrc"
+alias zrc="${EDITOR} ${ZDOTDIR}/.zshrc"
 
 # Alias for Zi plugin update.
 alias zu='zi self-update && zi update --parallel --reset --all'
