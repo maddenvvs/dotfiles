@@ -94,7 +94,7 @@ alias duc='du -sh $(ls -A) | sort -h -r'
 
 # Dotfiles management.
 alias dtf="cd ${HOME}/.config/dotfiles"
-alias zrc="${=EDITOR} ${ZDOTDIR:-$HOME}/.zshrc"
+alias zrc="${=EDITOR} ${ZDOTDIR}/.zshrc"
 
 # Alias for Zi plugin update.
 alias zu='zi self-update && zi update --parallel --reset --all'
@@ -185,6 +185,6 @@ zi light z-shell/F-Sy-H
 ###############################################################################
 
 # Load machine-specific zsh configuration.
-readonly ZSHRC_LOCAL="${HOME}/.zshrc.local"
+readonly ZSHRC_LOCAL="${ZDOTDIR}/.zshrc.local"
 [[ -f "${ZSHRC_LOCAL}" ]] && source "${ZSHRC_LOCAL}"
 

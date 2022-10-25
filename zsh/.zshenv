@@ -9,6 +9,7 @@ export ZDOTDIR="${ZDOTDIR:-${HOME}/.config/zsh}"
 export EDITOR='vim'
 export VISUAL='vim'
 
-readonly ZSHENV_LOCAL="${HOME}/.zshenv.local"
+# Load machine-specific configuration.
+readonly ZSHENV_LOCAL="${ZDOTDIR}/.zshenv.local"
 [[ -f "${ZSHENV_LOCAL}" ]] && source "${ZSHENV_LOCAL}"
 
