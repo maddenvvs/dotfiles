@@ -115,8 +115,6 @@ fi
 source "$ZDOTDIR/.zi/bin/zi.zsh"
 autoload -Uz _zi
 (( ${+_comps} )) && _comps[zi]=_zi
-# TODO: should the following line be uncommented?
-# zicompinit # <- https://wiki.zshell.dev/docs/guides/commands
 
 # Add Meta Plugins Zi Annex.
 # https://wiki.zshell.dev/ecosystem/annexes/meta-plugins
