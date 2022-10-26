@@ -23,6 +23,9 @@ call plug#begin('~/.vim/plugged')
 " Better defaults.
 Plug 'tpope/vim-sensible'
 
+" Simplify commenting out things.
+Plug 'tpope/vim-commentary'
+
 " Custom theme.
 Plug 'morhetz/gruvbox'
 
@@ -30,7 +33,7 @@ Plug 'morhetz/gruvbox'
 Plug 'vim-airline/vim-airline'
 
 " Fuzzy search (fzf) plugin.
-Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
+Plug 'junegunn/fzf'
 
 call plug#end()
 
@@ -111,6 +114,9 @@ nnoremap Y y$
 " Save a buffer both in NORMAL in INSERT modes.
 inoremap <C-s>     <C-O>:update<cr>
 nnoremap <C-s>     :update<cr>
+
+" Comment/uncomment with tpope/commentaty.
+noremap <leader>/ :Commentary<cr>
 
 filetype plugin indent on
 syntax on
