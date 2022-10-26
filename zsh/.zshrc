@@ -5,6 +5,13 @@ if [[ -r "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh" ]]
   source "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh"
 fi
 
+###############################################################################
+# Variables
+###############################################################################
+
+# The folder where dotfiles are stored.
+DOTFILES="${HOME}/.config/dotfiles"
+
 
 ###############################################################################
 # Options
@@ -93,9 +100,12 @@ alias l="ls -lAhF ${colorflag}"
 alias duc='du -sh $(ls -A) | sort -h -r'
 
 # Dotfiles management.
-alias dtf="cd ${HOME}/.config/dotfiles"
-alias zrc="${EDITOR} ${ZDOTDIR}/.zshrc"
-alias vrc="${EDITOR} ${HOME}/.config/dotfiles/vim/vimrc"
+function open_dotfiles_config() {
+  "${EDITOR}" $(find "${DOTFILES}" -type f -not -ipath '*/\.git/*' | fzf)
+}
+
+alias dtf="cd ${DOTFILES}"
+alias dtff="open_dotfiles_config"
 
 # Alias for Zi plugin update.
 alias zu='zi self-update && zi update --parallel --reset --all'
