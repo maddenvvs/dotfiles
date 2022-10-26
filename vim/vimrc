@@ -115,7 +115,7 @@ nnoremap Y y$
 inoremap <C-s>     <C-O>:update<cr>
 nnoremap <C-s>     :update<cr>
 
-" Comment/uncomment with tpope/commentaty.
+" Comment/uncomment with tpope/commentary.
 noremap <leader>/ :Commentary<cr>
 
 filetype plugin indent on
