@@ -40,6 +40,12 @@ Plug 'junegunn/fzf.vim'
 
 call plug#end()
 
+" Highlight all search words as you type.
+set hlsearch incsearch
+
+" When searching take case into account when using capital letters.
+set ignorecase smartcase
+
 " Disable error bell sound.
 set belloff=all
 
@@ -110,6 +116,12 @@ let g:airline#extensions#tabline#enabled = 1
 " line effectively fixes the issue. For more information please see:
 " https://sw.kovidgoyal.net/kitty/faq/#using-a-color-theme-with-a-background-color-does-not-work-well-in-vim
 let &t_ut=''
+
+" Change the cursor in different modes.
+" Normal - block, Insert - bar, Replace - underline.
+let &t_SI = "\e[5 q"
+let &t_SR = "\e[3 q"
+let &t_EI = "\e[2 q"
 
 " Make Y behave like C and D (do operation from the cursor to the end of line).
 nnoremap Y y$
