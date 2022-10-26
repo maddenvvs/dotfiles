@@ -35,6 +35,9 @@ Plug 'vim-airline/vim-airline'
 " Fuzzy search (fzf) plugin.
 Plug 'junegunn/fzf'
 
+" Useful fzf-based Vim commands and mappings.
+Plug 'junegunn/fzf.vim'
+
 call plug#end()
 
 " Disable error bell sound.
