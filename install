@@ -23,17 +23,19 @@ function _install_folder() {
   done
 }
 
-if [[ -f "${DOTFILES}/.done" ]] ; then
-  printf "Dotfiles are already installed.\n"
-  exit 0
+# Clone dotfiles repo to a predefined folder if they don't exist.
+if [[ ! -d "${DOTFILES}" ]] ; then
+  git clone "${DOTFILES_GIT}" "${DOTFILES}"
+
+  # Switch current working directory to dotfiles directory because
+  # installing submodules requires to be invoked from within the dotfiles folder.
+  pushd "${DOTFILES}"
+
+  # Pull all registered git submodules.
+  git submodule update --init --recursive
+
+  popd
 fi
-
-# Clone dotfiles repo to a predefined folder.
-git clone "${DOTFILES_GIT}" "${DOTFILES}"
-cd "${DOTFILES}"
-
-# Pull all registered git submodules.
-git submodule update --init --recursive
 
 for folder in "${INSTALL_FOLDERS[@]}"; do
   _install_folder "${folder}"
@@ -45,7 +47,4 @@ ln -fs "${CONFIG_FOLDER}/zsh/.zshenv" "${HOME}/.zshenv"
 
 # Make a symlink for .vim folder to properly initialize Vim.
 ln -fs "${CONFIG_FOLDER}/vim" "${HOME}/.vim"
-
-# Signal that installation is finished successfully.
-touch "${DOTFILES}/.done"
 
