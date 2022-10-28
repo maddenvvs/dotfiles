@@ -135,14 +135,14 @@ zi light z-shell/z-a-meta-plugins
 zi light @annexes
 
 # Install JetBrains font.
-zi ice if"[[ -d ${HOME}/.local/share/fonts ]] && [[ $OSTYPE = linux* ]]" \
+zi ice if"[[ $OSTYPE = linux* ]]" \
   id-as"jetbrains-font-linux" \
   from"gh-r" \
   bpick"JetBrainsMono.zip" \
   extract \
   nocompile \
   depth"1" \
-  atclone="rm -f *Windows*; mv -vf *.ttf ${HOME}/.local/share/fonts/; fc-cache -v -f" \
+  atclone="mkdir -p ${HOME}/.local/share/fonts/; rm -f *Windows*; mv -vf *.ttf ${HOME}/.local/share/fonts/; fc-cache -v -f" \
   atpull"%atclone"
 zi light ryanoasis/nerd-fonts
 
