@@ -1,3 +1,8 @@
+## How to install ##
+```zsh
+zsh -c "$(curl -fsSL https://raw.githubusercontent.com/maddenvvs/.dotfiles/main/install)"
+```
+
 ### Useful links
 - [How to enable italics support in Terminal on MacOS](https://apple.stackexchange.com/a/267261)
 - [Nerd Fonts](https://github.com/ryanoasis/nerd-fonts)
