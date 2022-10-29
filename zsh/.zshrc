@@ -111,7 +111,7 @@ function open_config_file() {
   popd &>/dev/null
 
   if [[ -n "${file_to_edit}" ]] ; then
-    "${EDITOR}" "${DOTFILES}/${file_to_edit}"
+    vim "+cd ${DOTFILES}" "${DOTFILES}/${file_to_edit}"
   fi
 }
 
