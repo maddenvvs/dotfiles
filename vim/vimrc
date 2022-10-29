@@ -38,6 +38,11 @@ Plug 'junegunn/fzf'
 " Useful fzf-based Vim commands and mappings.
 Plug 'junegunn/fzf.vim'
 
+" If I want to enable full distraction mode (current window is center
+" aligned with equal paddings to left and right) then uncomment the line
+" below.
+" Plug 'junegunn/goyo.vim'
+
 call plug#end()
 
 " Highlight all search words as you type.
@@ -63,7 +68,7 @@ set number relativenumber
 set smartindent
 
 " Disable backups and swapfile, use persistent undo instead.
-set noswapfile nowritebackup
+set noswapfile nobackup nowritebackup
 
 " Enable persistent undo.
 if has('persistent_undo')
@@ -80,6 +85,10 @@ set noshowmode
 
 " Better splits.
 set splitbelow splitright
+
+" Automatically write current working buffer when leaving it (on exit or on
+" edit of a new file).
+set autowriteall
 
 " Enable custom theme.
 " Vim always reads .vimrc file first and after that starts to load plugins. We
@@ -129,10 +138,28 @@ nnoremap Y y$
 " Save a buffer both in NORMAL in INSERT modes.
 inoremap <C-s>     <C-O>:update<cr>
 nnoremap <C-s>     :update<cr>
+nnoremap <leader>s :update<cr>
 
-" Comment/uncomment with tpope/commentary.
+" Comment/uncomment using tpope/commentary plugin.
 noremap <leader>/ :Commentary<cr>
 
+" Tab key mappings.
+noremap <leader>t :$tabnew<cr>
+noremap <leader>w :tabclose<cr>
+noremap <leader><Tab> :tabnext<cr>
+noremap <leader><S-Tab> :tabprevious<cr>
+noremap <leader>>> :+tabmove<cr>
+noremap <leader><< :-tabmove<cr>
+
+" Ctrl-P behaviour like in VS Code.
+" The displayed filelist depends on $FZF_DEFAULT_COMMAND environment variable
+" defined in zsh configuration files.
+noremap <leader>p :Files<cr>
+
 filetype plugin indent on
-syntax on
+
+" TODO: not sure whether enabling syntax highlight here is a good because
+" it should be enabled after :set background=dark which is happening inside
+" theme setting above.
+syntax enable
 

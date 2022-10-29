@@ -12,6 +12,9 @@ fi
 # The folder where dotfiles are stored.
 DOTFILES="${HOME}/.config/dotfiles"
 
+# Specify default command used on every fzf invocation when there is no initial
+# list available (tries to read from stdin instead of the pipe).
+export FZF_DEFAULT_COMMAND="find . -path '*/.git/*' -prune -o -print"
 
 ###############################################################################
 # Options
@@ -100,12 +103,20 @@ alias l="ls -lAhF ${colorflag}"
 alias duc='du -sh $(ls -A) | sort -h -r'
 
 # Dotfiles management.
-function open_dotfiles_config() {
-  "${EDITOR}" $(find "${DOTFILES}" -type f -not -ipath '*/\.git/*' | fzf)
+function open_config_file() {
+  local file_to_edit
+
+  pushd "${DOTFILES}" &>/dev/null
+  file_to_edit="$(fzf)"
+  popd &>/dev/null
+
+  if [[ -n "${file_to_edit}" ]] ; then
+    "${EDITOR}" "${DOTFILES}/${file_to_edit}"
+  fi
 }
 
 alias dtf="cd ${DOTFILES}"
-alias dtff="open_dotfiles_config"
+alias dff="open_config_file"
 
 # Alias for Zi plugin update.
 alias zu='zi self-update && zi update --parallel --reset --all'
