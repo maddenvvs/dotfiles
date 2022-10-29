@@ -145,7 +145,7 @@ noremap <leader>/ :Commentary<cr>
 
 " Tab key mappings.
 noremap <leader>t :$tabnew<cr>
-noremap <leader>w :tabclose<cr>
+noremap <leader>w :windo bdelete<cr>
 noremap <leader><Tab> :tabnext<cr>
 noremap <leader><S-Tab> :tabprevious<cr>
 noremap <leader>>> :+tabmove<cr>
@@ -155,6 +155,10 @@ noremap <leader><< :-tabmove<cr>
 " The displayed filelist depends on $FZF_DEFAULT_COMMAND environment variable
 " defined in zsh configuration files.
 noremap <leader>p :Files<cr>
+
+" For fzf preview window, pressing enter opens a file in a separate tab instead
+" of the current one.
+let g:fzf_action = { 'enter': 'tab split' }
 
 filetype plugin indent on
 
