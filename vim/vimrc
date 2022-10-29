@@ -135,6 +135,13 @@ let &t_EI = "\e[2 q"
 " Make Y behave like C and D (do operation from the cursor to the end of line).
 nnoremap Y y$
 
+" Make :h and :help to open in a new tab instead of a new split window.
+" Taken from here: https://stackoverflow.com/a/3132202
+cnoreabbrev <expr> h
+  \ getcmdtype() == ":" && getcmdline() == 'h' ? 'tab help' : 'h'
+cnoreabbrev <expr> help
+  \ getcmdtype() == ":" && getcmdline() == 'help' ? 'tab help' : 'help'
+
 " Save a buffer both in NORMAL in INSERT modes.
 inoremap <C-s>     <C-O>:update<cr>
 nnoremap <C-s>     :update<cr>
