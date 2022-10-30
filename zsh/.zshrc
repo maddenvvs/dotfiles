@@ -107,7 +107,7 @@ function open_config_file() {
   local file_to_edit
 
   pushd "${DOTFILES}" &>/dev/null
-  file_to_edit="$(fzf)"
+  file_to_edit="$(fzf --preview 'cat {}')"
   popd &>/dev/null
 
   if [[ -n "${file_to_edit}" ]] ; then
