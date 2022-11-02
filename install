@@ -11,7 +11,7 @@ readonly INSTALL_FOLDERS=(\
   "zsh" \
 )
 
-function _install_folder() {
+function install_folder() {
   local folder_name="${1}"
   local source_folder="${DOTFILES}/${folder_name}"
   local target_folder="${CONFIG_FOLDER}/${folder_name}"
@@ -23,28 +23,33 @@ function _install_folder() {
   done
 }
 
-# Clone dotfiles repo to a predefined folder if they don't exist.
-if [[ ! -d "${DOTFILES}" ]] ; then
-  git clone "${DOTFILES_GIT}" "${DOTFILES}"
+function install_dotfile_config() {
+  for folder in "${INSTALL_FOLDERS[@]}"; do
+    install_folder "${folder}"
+  done
+}
 
-  # Switch current working directory to dotfiles directory because
-  # installing submodules requires to be invoked from within the dotfiles folder.
-  pushd "${DOTFILES}"
+function clone_dotfiles_if_required() {
+  # Clone dotfiles repo to a predefined folder if they don't exist.
+  if [[ ! -d "${DOTFILES}" ]] ; then
+    git clone "${DOTFILES_GIT}" "${DOTFILES}"
 
-  # Pull all registered git submodules.
-  git submodule update --init --recursive
+    # Pull all registered git submodules.
+    git -C "${DOTFILES}" submodule update --init --recursive
+  fi
+}
 
-  popd
-fi
+function install_required_home_files() {
+  # Make a symlink for .zshenv file to $HOME folder because initially this is
+  # where zsh starts to look for user-specific configuration.
+  ln -fs "${CONFIG_FOLDER}/zsh/.zshenv" "${HOME}/.zshenv"
 
-for folder in "${INSTALL_FOLDERS[@]}"; do
-  _install_folder "${folder}"
-done
+  # Make a symlink for .vim folder to properly initialize Vim.
+  ln -fs "${CONFIG_FOLDER}/vim" "${HOME}/.vim"
+}
 
-# Make a symlink for .zshenv file to $HOME folder because initially this is
-# where zsh starts to look for user-specific configuration.
-ln -fs "${CONFIG_FOLDER}/zsh/.zshenv" "${HOME}/.zshenv"
 
-# Make a symlink for .vim folder to properly initialize Vim.
-ln -fs "${CONFIG_FOLDER}/vim" "${HOME}/.vim"
+clone_dotfiles_if_required
+install_dotfile_config
+install_required_home_files
 
