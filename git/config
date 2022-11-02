@@ -1,0 +1,7 @@
+[user]
+	name = maddenvvs
+	email = maddenvvs@gmail.com
+
+# Allow machine-specific overrides.
+[include]
+	path = config.local

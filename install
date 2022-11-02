@@ -6,6 +6,7 @@ readonly CONFIG_FOLDER="${HOME}/.config"
 readonly DOTFILES="${CONFIG_FOLDER}/dotfiles"
 readonly DOTFILES_GIT="https://github.com/maddenvvs/.dotfiles.git"
 readonly INSTALL_FOLDERS=(\
+  "git" \
   "kitty" \
   "vim" \
   "zsh" \
