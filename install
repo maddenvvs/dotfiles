@@ -17,6 +17,11 @@ function install_folder() {
   local source_folder="${DOTFILES}/${folder_name}"
   local target_folder="${CONFIG_FOLDER}/${folder_name}"
 
+  # If there is already exist a target folder then do nothing.
+  if [[ -d "${target_folder}" ]] ; then
+    return 0
+  fi
+
   mkdir -p "${target_folder}"
 
   for file in "${source_folder}"/*(DN); do
