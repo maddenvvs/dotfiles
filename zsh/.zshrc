@@ -13,7 +13,7 @@ fi
 DOTFILES="${HOME}/.config/dotfiles"
 
 # Specify default command used on every fzf invocation when there is no initial
-# list available (tries to read from stdin instead of the pipe).
+# list available (when fzf tries to read the list from stdin instead of a pipe).
 export FZF_DEFAULT_COMMAND="find . -path '*/.git/*' -prune -o -print"
 
 ###############################################################################
@@ -192,12 +192,12 @@ zi light Aloxaf/fzf-tab
 zi ice pick"/dev/null"
 zi light zsh-users/zsh-completions
 
-zi ice atload'_zsh_autosuggest_start;'
-zi light zsh-users/zsh-autosuggestions
-
 zi ice atinit"ZI[COMPINIT_OPTS]=-C; zicompinit; zicdreplay;" \
        atload"fast-theme default &>/dev/null;"
 zi light z-shell/F-Sy-H
+
+zi ice atload'_zsh_autosuggest_start;'
+zi light zsh-users/zsh-autosuggestions
 
 
 ###############################################################################
