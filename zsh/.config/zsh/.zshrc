@@ -9,6 +9,9 @@ fi
 # Variables
 ###############################################################################
 
+# Add local binaries for my personal use.
+export PATH="${HOME}/.local/bin:${PATH}"
+
 # The folder where dotfiles are stored.
 DOTFILES="${HOME}/.config/dotfiles"
 

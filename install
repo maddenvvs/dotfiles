@@ -2,60 +2,19 @@
 
 set -euo pipefail
 
-readonly CONFIG_FOLDER="${HOME}/.config"
-readonly DOTFILES="${CONFIG_FOLDER}/dotfiles"
+readonly DOTFILES="${HOME}/.config/dotfiles"
+readonly STOW="${DOTFILES}/bin/.local/bin/stow"
 readonly DOTFILES_GIT="https://github.com/maddenvvs/.dotfiles.git"
-readonly INSTALL_FOLDERS=(\
+readonly PACKAGES=(\
+  "bin" \
   "git" \
   "kitty" \
   "vim" \
   "zsh" \
 )
 
-function install_folder() {
-  local folder_name="${1}"
-  local source_folder="${DOTFILES}/${folder_name}"
-  local target_folder="${CONFIG_FOLDER}/${folder_name}"
+# Clone dotfiles repo to a predefined folder if they don't exist.
+[[ ! -d "${DOTFILES}" ]] && git clone "${DOTFILES_GIT}" "${DOTFILES}"
 
-  # If there is already exist a target folder then do nothing.
-  if [[ -d "${target_folder}" ]] ; then
-    return 0
-  fi
-
-  mkdir -p "${target_folder}"
-
-  for file in "${source_folder}"/*(DN); do
-    ln -fs "${file}" "${target_folder}"/$(basename "${file}")
-  done
-}
-
-function install_dotfile_config() {
-  for folder in "${INSTALL_FOLDERS[@]}"; do
-    install_folder "${folder}"
-  done
-}
-
-function clone_dotfiles_if_required() {
-  # Clone dotfiles repo to a predefined folder if they don't exist.
-  if [[ ! -d "${DOTFILES}" ]] ; then
-    git clone "${DOTFILES_GIT}" "${DOTFILES}"
-
-    # Pull all registered git submodules.
-    git -C "${DOTFILES}" submodule update --init --recursive
-  fi
-}
-
-function install_required_home_files() {
-  # Make a symlink for .zshenv file to $HOME folder because initially this is
-  # where zsh starts to look for user-specific configuration.
-  ln -fs "${CONFIG_FOLDER}/zsh/.zshenv" "${HOME}/.zshenv"
-
-  # Make a symlink for .vim folder to properly initialize Vim.
-  ln -fs "${CONFIG_FOLDER}/vim" "${HOME}/.vim"
-}
-
-
-clone_dotfiles_if_required
-install_dotfile_config
-install_required_home_files
-
+# Install all stow packages.
+"${STOW}" -vS -t "${HOME}" -d "${DOTFILES}" "${PACKAGES[@]}"

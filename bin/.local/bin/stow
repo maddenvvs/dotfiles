@@ -1,0 +1,178 @@
+#!/usr/bin/env zsh
+
+ACTION="install"
+PACKAGES=()
+STOW_DIR="${PWD}"
+TARGET_DIR=""
+
+RUN_COMMAND_FUNC="run_command"
+VERBOSE=":"
+
+function run_command() {
+  $VERBOSE "${@}\n"
+  eval "${@}"
+}
+
+function print_err() {
+  printf "$*" >&2
+}
+
+function stow_help() {
+  print_err "Stow help\n"
+}
+
+function canonize_path() {
+  python3 -c "import os,sys; print(os.path.realpath(sys.argv[1]))" "${1}"
+}
+
+function parent_dir() {
+  local child_dir="${1}"
+  child_dir="$(canonize_path "${child_dir}")"
+  dirname "${child_dir}"
+}
+
+function list_files() {
+  local target="${1}"
+  find "${target}" -type f -print0 -or -type l -print0
+}
+
+function list_folders() {
+  local target="${1}"
+  find "${target}" -mindepth 1 -type d -depth -print0
+}
+
+function stow_install_package() {
+  local package_name="${1}"
+  local package_path="$(canonize_path "${STOW_DIR}/${package_name}")"
+  local commands=()
+
+  if [[ ! -d "${package_path}" ]] ; then
+    print_err "Package '${package_name}' at path '${package_path}' doesn't exist."
+    return 1
+  fi
+
+  pushd "${package_path}"
+
+  local package_dir target_package_dir
+  while IFS= read -r -d '' package_dir; do
+    target_package_dir="$(canonize_path "${TARGET_DIR}/$package_dir")"
+    commands+=( "mkdir -p '${target_package_dir}'" )
+  done < <(list_folders ".")
+
+  local package_file target_package_file canonized_package_file
+  while IFS= read -r -d '' package_file; do
+    target_package_file="${TARGET_DIR}/${package_file}"
+    canonized_package_file="${package_path}/${package_file}"
+    commands+=("ln -sf '${canonized_package_file}' '${target_package_file}'")
+  done < <(list_files ".")
+
+  popd
+
+  for command in "${commands[@]}"; do
+    "${RUN_COMMAND_FUNC}" "${command}"
+  done
+}
+
+function stow_delete_package() {
+  local package_name="${1}"
+  local package_path="$(canonize_path "${STOW_DIR}/${package_name}")"
+  local commands=()
+
+  if [[ ! -d "${package_path}" ]] ; then
+    print_err "Package '${package_name}' at path '${package_path}' doesn't exist."
+    return 1
+  fi
+
+  pushd "${package_path}"
+
+  local package_file target_package_file canonized_package_file
+  while IFS= read -r -d '' package_file; do
+    target_package_file="${TARGET_DIR}/${package_file}"
+    canonized_package_file="$(canonize_path "${package_file}")"
+
+    # TODO: check whether file is a symlink pointing to the original file
+    # before removing it.
+    commands+=("rm -f '${target_package_file}'")
+  done < <(list_files ".")
+
+  local package_dir target_package_dir
+  while IFS= read -r -d '' package_dir; do
+    target_package_dir="$(canonize_path "${TARGET_DIR}/$package_dir")"
+    commands+=( "find '${target_package_dir}' -type d -empty -delete" )
+  done < <(list_folders ".")
+
+  for command in "${commands[@]}"; do
+    "${RUN_COMMAND_FUNC}" "${command}"
+  done
+}
+
+function stow_packages_apply() {
+  local action_func="${1}"
+
+  local package
+  for package in "${PACKAGES[@]}"; do
+    "${action_func}" "${package}"
+  done
+}
+
+functions stow_install() {
+  stow_packages_apply "stow_install_package"
+}
+
+function stow_delete() {
+  stow_packages_apply "stow_delete_package"
+}
+
+function stow_restow() {
+  stow_delete
+  stow_install
+}
+
+function parse_options() {
+  while getopts ":hnSDRvt:d:" opt; do
+    case $opt in
+      S) ACTION="install" ;;
+      D) ACTION="delete" ;;
+      R) ACTION="restow" ;;
+      n) RUN_COMMAND_FUNC="echo" ;;
+      v) VERBOSE=print_err ;;
+      d) STOW_DIR="${OPTARG}" ;;
+      t) TARGET_DIR="${OPTARG}" ;;
+      h) stow_help; exit 1 ;;
+      *)
+        print_err "Invalid flag: '${OPTARG}'\n"
+        stow_help
+        exit 1
+        ;;
+    esac
+  done
+  shift $(( OPTIND - 1 ))
+
+  PACKAGES=( "${@}" )
+}
+
+function main() {
+  parse_options "${@}"
+
+  if [[ "${#PACKAGES[@]}" -eq 0 ]] ; then
+    stow_help
+    exit 1
+  fi
+
+  # If target directory was not provided then use parent of the stow directory.
+  if [[ -z "${TARGET_DIR}" ]] ; then
+    TARGET_DIR="$(parent_dir "${STOW_DIR}")"
+  fi
+
+  STOW_DIR="$(canonize_path "${STOW_DIR}")"
+  TARGET_DIR="$(canonize_path "${TARGET_DIR}")"
+
+  $VERBOSE "Stow directory: ${STOW_DIR}\n"
+  $VERBOSE "Target directory: ${TARGET_DIR}\n"
+  $VERBOSE "Execute action: '${ACTION}'\n"
+
+  "stow_${ACTION}"
+}
+
+main "${@}"
+
