@@ -9,8 +9,11 @@
 unlet! skip_defaults_vim
 source $VIMRUNTIME/defaults.vim
 
-" Set leader key. Default is '\'.
+" Set leader key to <space>. Default is '\'.
 let mapleader=" "
+
+" Set local leader key to <space>f.
+let maplocalleader=" l"
 
 " Automatically bootstrap vim-plug plugins.
 let data_dir = has('nvim') ? stdpath('data') . '/site' : '~/.vim'
@@ -44,6 +47,9 @@ Plug 'junegunn/fzf.vim'
 " aligned with equal paddings to left and right) then uncomment the line
 " below.
 " Plug 'junegunn/goyo.vim'
+
+" todo.txt syntax highlighting with additional key mappings.
+Plug 'freitass/todo.txt-vim'
 
 call plug#end()
 
