@@ -3,7 +3,7 @@
 set -euo pipefail
 
 readonly DOTFILES="${HOME}/.config/dotfiles"
-readonly STOW="${DOTFILES}/bin/.local/bin/stow"
+readonly LOCAL_STOW="${DOTFILES}/bin/.local/bin/stow"
 readonly DOTFILES_GIT="https://github.com/maddenvvs/.dotfiles.git"
 readonly PACKAGES=(\
   "bin" \
@@ -17,4 +17,5 @@ readonly PACKAGES=(\
 [[ ! -d "${DOTFILES}" ]] && git clone "${DOTFILES_GIT}" "${DOTFILES}"
 
 # Install all stow packages.
-"${STOW}" -vS -t "${HOME}" -d "${DOTFILES}" "${PACKAGES[@]}"
+"${LOCAL_STOW}" -v -t "${HOME}" -d "${DOTFILES}" -S "${PACKAGES[@]}"
+
