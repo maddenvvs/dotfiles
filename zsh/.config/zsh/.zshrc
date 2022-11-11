@@ -129,15 +129,20 @@ alias zu='zi self-update && zi update --parallel --reset --all'
 # Plugins
 ###############################################################################
 
+# Configure Zi paths to use during its and its' plugins installation.
+typeset -A ZI
+ZI[HOME_DIR]="${ZDOTDIR}/.zi"
+ZI[BIN_DIR]="${ZI[HOME_DIR]}/bin"
+
 # Zi-generated installation script.
-if [[ ! -f $ZDOTDIR/.zi/bin/zi.zsh ]]; then
+if [[ ! -f "${ZI[BIN_DIR]}/zi.zsh" ]]; then
   print -P "%F{33}▓▒░ %F{160}Installing (%F{33}z-shell/zi%F{160})…%f"
-  command mkdir -p "$ZDOTDIR/.zi" && command chmod go-rwX "$ZDOTDIR/.zi"
-  command git clone -q --depth=1 --branch "main" https://github.com/z-shell/zi "$ZDOTDIR/.zi/bin" && \
+  command mkdir -p "${ZI[HOME_DIR]}" && command chmod go-rwX "${ZI[HOME_DIR]}"
+  command git clone -q --depth=1 --branch "main" https://github.com/z-shell/zi "${ZI[BIN_DIR]}" && \
     print -P "%F{33}▓▒░ %F{34}Installation successful.%f%b" || \
     print -P "%F{160}▓▒░ The clone has failed.%f%b"
 fi
-source "$ZDOTDIR/.zi/bin/zi.zsh"
+source "${ZI[BIN_DIR]}/zi.zsh"
 autoload -Uz _zi
 (( ${+_comps} )) && _comps[zi]=_zi
 
