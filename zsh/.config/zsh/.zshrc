@@ -187,7 +187,12 @@ zi ice as"completion"
 zi snippet https://github.com/docker/cli/blob/master/contrib/completion/zsh/_docker
 
 # Install fzf with key bindings.
-zi pack"bgn-binary+keys" for fzf
+# Downgrade installation from "bgn-binary+keys" to "bng-binary" + explicit
+# key bindings sourcing because Zi after update to 1.0.2 can't source
+# "key-binings.zsh" file downloaded in "bgn-binary+keys" pack.
+# zi pack"bgn-binary+keys" for fzf
+zi pack"bgn-binary" for fzf
+zi snippet https://raw.githubusercontent.com/junegunn/fzf/master/shell/key-bindings.zsh
 
 # Replace zsh's default completion selection menu with fzf.
 zi light Aloxaf/fzf-tab
