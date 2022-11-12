@@ -182,3 +182,10 @@ filetype plugin indent on
 " theme setting above.
 syntax enable
 
+" Source .vimrc.local with its Vim configuration if exists.
+" This file may contain machine-specific configuration.
+let s:local_vimrc = fnamemodify(expand('<sfile>'), ':p:h').'/.vimrc.local'
+if filereadable(s:local_vimrc)
+  execute 'source' s:local_vimrc
+endif
+
