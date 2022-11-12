@@ -9,11 +9,11 @@
 unlet! skip_defaults_vim
 source $VIMRUNTIME/defaults.vim
 
-" Set leader key to <space>. Default is '\'.
+" Set leader key. Default is '\'.
 let mapleader="\<Space>"
 
-" Set local leader key to <space>l.
-let maplocalleader="\<Space>l"
+" Set local leader key.
+let maplocalleader="\<Space>\<Space>"
 
 " Automatically bootstrap vim-plug plugins.
 let data_dir = has('nvim') ? stdpath('data') . '/site' : '~/.vim'
