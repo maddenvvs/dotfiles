@@ -1,11 +1,6 @@
-" Vim configuration options.
-
-" Set leader key. Default is '\'.
-let mapleader="\<Space>"
-
-" Set local leader key.
-let maplocalleader="\<Space>l"
-
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" Options
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " During searching, take case into the account when using capital letters.
 set ignorecase smartcase
 
@@ -52,28 +47,81 @@ set autowriteall
 " Better display of special characters.
 set list listchars=tab:»\ ,space:·,extends:›,precedes:‹,nbsp:␣
 
-" Enable custom theme.
-" Vim always reads .vimrc file first and after that starts to load plugins. We
-" use autocmd VimEnter to make sure that all plugins are loaded completely and
-" then use gruvbox. ++nested is used to allow automatic filetype detection.
-autocmd VimEnter * ++nested call ConfigureGruvboxTheme()
 
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" Key bindings
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" Set leader key. Default is '\'.
+let mapleader="\<Space>"
+
+" Set local leader key.
+let maplocalleader="\<Space>l"
+
+" Make Y behave like C and D (do operation from the cursor to the end of line).
+nnoremap Y y$
+
+" Save a buffer both in NORMAL in INSERT modes.
+inoremap <C-s>     <C-O>:update<cr>
+nnoremap <C-s>     :update<cr>
+nnoremap <leader>w :update<cr>
+
+" Comment/uncomment using tpope/commentary plugin.
+noremap <leader>/ :Commentary<cr>
+
+" Tab key mappings.
+nnoremap <leader>tt :$tabnew<cr>
+nnoremap <leader>tw :windo bdelete<cr>
+nnoremap <leader><Tab> :tabnext<cr>
+nnoremap <leader><S-Tab> :tabprevious<cr>
+nnoremap <leader>>> :+tabmove<cr>
+nnoremap <leader><< :-tabmove<cr>
+
+" Ctrl-P behaviour like in VS Code.
+" The displayed filelist depends on $FZF_DEFAULT_COMMAND environment variable
+" defined in zsh configuration files.
+nnoremap <leader>p :Files<cr>
+
+
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" Misc
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" Make :h and :help to open in a new tab instead of a new split window.
+" Taken from here: https://stackoverflow.com/a/3132202
+cnoreabbrev <expr> h
+  \ getcmdtype() == ":" && getcmdline() == 'h' ? 'tab help' : 'h'
+cnoreabbrev <expr> help
+  \ getcmdtype() == ":" && getcmdline() == 'help' ? 'tab help' : 'help'
+
+
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" Gruvbox
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 function ConfigureGruvboxTheme()
-  " Enable True Color support.
-  set termguicolors
+  " Enable True Color support if possible.
+  if (has("termguicolors"))
+    set termguicolors
+  endif
 
   " Use dark theme.
   set background=dark
-
-  " Configure theme contrast.
   let g:gruvbox_contrast_dark = 'medium'
 
   " Enforce italic usage on terminals.
   let g:gruvbox_italic = 1
 
+  " Enable Gruvbox theme.
   colorscheme gruvbox
 endfunction
 
+" Vim always reads .vimrc file first and after that starts to load plugins. We
+" use autocmd VimEnter to make sure that all plugins are loaded completely and
+" then use gruvbox. ++nested is used to allow automatic filetype detection.
+autocmd VimEnter * ++nested call ConfigureGruvboxTheme()
+
+
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" Airline
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Automatically populate the g:airline_symbols dictionary with the powerline
 " symbols.
 let g:airline_powerline_fonts = 1
@@ -81,10 +129,18 @@ let g:airline_powerline_fonts = 1
 " Automatically displays all buffers when there's only one tab open.
 let g:airline#extensions#tabline#enabled = 1
 
+
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" Fzf
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " For fzf preview window, pressing enter opens a file in a separate tab instead
 " of the current one.
 let g:fzf_action = { 'enter': 'tab split' }
 
+
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" Kitty terminal
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Vim uses background color erase when Vim theme declares background color.
 " Kitty terminal emulator doesn't support background color erase which leads
 " to incorrect displaying of background color when scrolling. The following
@@ -97,35 +153,4 @@ let &t_ut=''
 let &t_SI = "\e[5 q"
 let &t_SR = "\e[3 q"
 let &t_EI = "\e[2 q"
-
-" Make :h and :help to open in a new tab instead of a new split window.
-" Taken from here: https://stackoverflow.com/a/3132202
-cnoreabbrev <expr> h
-  \ getcmdtype() == ":" && getcmdline() == 'h' ? 'tab help' : 'h'
-cnoreabbrev <expr> help
-  \ getcmdtype() == ":" && getcmdline() == 'help' ? 'tab help' : 'help'
-
-" Make Y behave like C and D (do operation from the cursor to the end of line).
-nnoremap Y y$
-
-" Save a buffer both in NORMAL in INSERT modes.
-inoremap <C-s>     <C-O>:update<cr>
-nnoremap <C-s>     :update<cr>
-nnoremap <leader>s :update<cr>
-
-" Comment/uncomment using tpope/commentary plugin.
-noremap <leader>/ :Commentary<cr>
-
-" Tab key mappings.
-noremap <leader>t :$tabnew<cr>
-noremap <leader>w :windo bdelete<cr>
-noremap <leader><Tab> :tabnext<cr>
-noremap <leader><S-Tab> :tabprevious<cr>
-noremap <leader>>> :+tabmove<cr>
-noremap <leader><< :-tabmove<cr>
-
-" Ctrl-P behaviour like in VS Code.
-" The displayed filelist depends on $FZF_DEFAULT_COMMAND environment variable
-" defined in zsh configuration files.
-nnoremap <leader>p :Files<cr>
 
