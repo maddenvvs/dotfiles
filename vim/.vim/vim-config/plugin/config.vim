@@ -49,6 +49,9 @@ set splitbelow splitright
 " edit of a new file).
 set autowriteall
 
+" Better display of special characters.
+set list listchars=tab:»\ ,space:·,extends:›,precedes:‹,nbsp:␣
+
 " Enable custom theme.
 " Vim always reads .vimrc file first and after that starts to load plugins. We
 " use autocmd VimEnter to make sure that all plugins are loaded completely and
@@ -124,5 +127,5 @@ noremap <leader><< :-tabmove<cr>
 " Ctrl-P behaviour like in VS Code.
 " The displayed filelist depends on $FZF_DEFAULT_COMMAND environment variable
 " defined in zsh configuration files.
-noremap <leader>p :Files<cr>
+nnoremap <leader>p :Files<cr>
 
