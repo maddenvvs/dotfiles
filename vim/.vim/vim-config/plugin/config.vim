@@ -4,7 +4,7 @@
 let mapleader="\<Space>"
 
 " Set local leader key.
-let maplocalleader="\<Space>\<Space>"
+let maplocalleader="\<Space>l"
 
 " During searching, take case into the account when using capital letters.
 set ignorecase smartcase
