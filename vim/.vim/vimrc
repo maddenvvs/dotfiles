@@ -39,8 +39,8 @@ set shiftwidth=2
 
 " Disable backups and swapfile, use persistent undo instead.
 set nobackup
-set noswapfile
 set nowritebackup
+set noswapfile
 if has('persistent_undo')
   set undofile undodir=~/.cache/vim/undo
   call mkdir(&undodir, "p", 0700)
