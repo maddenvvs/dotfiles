@@ -9,7 +9,7 @@
   "filterLinkHints": false,
   "waitForEnterForFilteredHints": true,
   "hideHud": false,
-  "keyMappings": "# Insert your preferred key mappings here.\n\n# Hard reload.\nmap R reload hard\n\n# Create incognito window.\nmap I createTab incognito\n\n# Allow passing pressed keys to webpage instead of Vimium.\nmap <m-]> passNextKey",
+  "keyMappings": "# Insert your preferred key mappings here.\n\n# Hard reload.\nmap R reload hard\n\n# Open a link in Incognito window\nmap I LinkHints.activateModeToOpenIncognito\n\n# Allow passing pressed keys to webpage instead of Vimium.\nmap <m-]> passNextKey",
   "linkHintCharacters": "sadfjklewcmpgh",
   "linkHintNumbers": "0123456789",
   "newTabUrl": "about:newtab",
