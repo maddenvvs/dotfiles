@@ -169,9 +169,6 @@ endif
 " independent path, which is preferred.
 call plug#begin()
 
-" Better defaults.
-Plug 'tpope/vim-sensible'
-
 " Simplify commenting out things.
 Plug 'tpope/vim-commentary'
 
