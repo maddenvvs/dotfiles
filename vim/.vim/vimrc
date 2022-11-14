@@ -30,14 +30,17 @@ set cursorline
 set number
 set relativenumber
 
-" Smart autoindent when starting a new line.
+" Tabs and indenting.
+set autoindent
 set smartindent
+set smarttab
+set expandtab
+set shiftwidth=2
 
 " Disable backups and swapfile, use persistent undo instead.
 set nobackup
 set noswapfile
 set nowritebackup
-
 if has('persistent_undo')
   set undofile undodir=~/.cache/vim/undo
   call mkdir(&undodir, "p", 0700)
@@ -46,21 +49,27 @@ endif
 " Shorter update time than the 4000ms default, for async vim operations.
 set updatetime=2000
 
-" Disable --INSERT-- which is not necessary, because vim-airline already
-" displays it.
+" Disable --[NORMAL/INSERT/VISUAL]-- because vim-airline already displays it.
 set noshowmode
 
 " Better splits.
 set splitbelow
 set splitright
 
-" Automatically write current working buffer when leaving it (on exit or on
-" edit of a new file).
-set autowriteall
+" Automatically read a file when it was modified outside of Vim.
+set autoread
 
 " Better display of non-printable characters.
 set list
 set listchars=tab:»\ ,space:·,extends:›,precedes:‹,nbsp:␣
+
+" Enable True Color support if possible.
+if (has("termguicolors"))
+  set termguicolors
+endif
+
+" Background color brightness.
+set background=dark
 
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
@@ -102,27 +111,16 @@ cnoreabbrev <expr> help
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Gruvbox
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-function ConfigureGruvboxTheme()
-  " Enable True Color support if possible.
-  if (has("termguicolors"))
-    set termguicolors
-  endif
+" Use medium contrast variant of the theme.
+let g:gruvbox_contrast_dark = 'medium'
 
-  " Use dark theme.
-  set background=dark
-  let g:gruvbox_contrast_dark = 'medium'
-
-  " Enforce italic usage on terminals.
-  let g:gruvbox_italic = 1
-
-  " Enable Gruvbox theme.
-  colorscheme gruvbox
-endfunction
+" Enforce italic usage on terminals.
+let g:gruvbox_italic = 1
 
 " Vim always reads .vimrc file first and after that starts to load plugins. We
 " use autocmd VimEnter to make sure that all plugins are loaded completely and
 " then use gruvbox. ++nested is used to allow automatic filetype detection.
-autocmd VimEnter * ++nested call ConfigureGruvboxTheme()
+autocmd VimEnter * ++nested colorscheme gruvbox
 
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
@@ -169,33 +167,28 @@ endif
 " independent path, which is preferred.
 call plug#begin()
 
-" Simplify commenting out things.
-Plug 'tpope/vim-commentary'
+  " Simplify commenting out things.
+  Plug 'tpope/vim-commentary'
 
-" Custom theme.
-Plug 'morhetz/gruvbox'
+  " Custom theme.
+  Plug 'morhetz/gruvbox'
 
-" Status bar plugin.
-Plug 'vim-airline/vim-airline'
+  " Status bar plugin.
+  Plug 'vim-airline/vim-airline'
 
-" Fuzzy search (fzf) plugin.
-Plug 'junegunn/fzf'
+  " Fuzzy search (fzf) plugin.
+  Plug 'junegunn/fzf'
 
-" Useful fzf-based Vim commands and mappings.
-Plug 'junegunn/fzf.vim'
+  " Useful fzf-based Vim commands and mappings.
+  Plug 'junegunn/fzf.vim'
 
-" If I want to enable full distraction mode (current window is center
-" aligned with equal paddings to left and right) then uncomment the line
-" below.
-" Plug 'junegunn/goyo.vim'
+  " If I want to enable full distraction mode (current window is center
+  " aligned with equal paddings to left and right) then uncomment the line
+  " below.
+  " Plug 'junegunn/goyo.vim'
 
-" todo.txt syntax highlighting with additional key mappings.
-Plug 'freitass/todo.txt-vim'
+  " todo.txt syntax highlighting with additional key mappings.
+  Plug 'freitass/todo.txt-vim'
 
-" During this call, "filetype plugin indent on" and "syntax enable" are
-" invoked.
-" TODO: not sure whether enabling syntax highlight here is a good because
-" it should be enabled after :set background=dark which is happening during
-" theme setting.
 call plug#end()
 
