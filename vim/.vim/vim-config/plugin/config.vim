@@ -1,7 +1,7 @@
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Options
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" During searching, take case into the account when using capital letters.
+" During searching, take the case into the account when using capital letters.
 set ignorecase smartcase
 
 " Disable error bell sound.
@@ -44,7 +44,7 @@ set splitbelow splitright
 " edit of a new file).
 set autowriteall
 
-" Better display of special characters.
+" Better display of non-printable characters.
 set list listchars=tab:»\ ,space:·,extends:›,precedes:‹,nbsp:␣
 
 
@@ -63,7 +63,6 @@ nnoremap Y y$
 " Save a buffer both in NORMAL in INSERT modes.
 inoremap <C-s>     <C-O>:update<cr>
 nnoremap <C-s>     :update<cr>
-nnoremap <leader>w :update<cr>
 
 " Comment/uncomment using tpope/commentary plugin.
 noremap <leader>/ :Commentary<cr>
