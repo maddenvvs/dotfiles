@@ -11,6 +11,48 @@ source $VIMRUNTIME/defaults.vim
 
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" Plugins
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" Automatically bootstrap vim-plug plugins.
+let data_dir = has('nvim') ? stdpath('data') . '/site' : '~/.vim'
+if empty(glob(data_dir . '/autoload/plug.vim'))
+  silent execute '!curl -fLo '.data_dir.'/autoload/plug.vim --create-dirs  https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim'
+  autocmd VimEnter * PlugInstall --sync | source $MYVIMRC
+endif
+
+" Define external plugins with vim-plug.
+" plug#begin([PLUG_HOME]) supports providing the directory where to install
+" Vim plugins. When not provided, it will use platform-specific Vim/Neovim
+" independent path, which is preferred.
+call plug#begin()
+
+  " Simplify commenting out things.
+  Plug 'tpope/vim-commentary'
+
+  " Custom theme.
+  Plug 'morhetz/gruvbox'
+
+  " Status bar plugin.
+  Plug 'vim-airline/vim-airline'
+
+  " Fuzzy search (fzf) plugin.
+  Plug 'junegunn/fzf'
+
+  " Useful fzf-based Vim commands and mappings.
+  Plug 'junegunn/fzf.vim'
+
+  " If I want to enable full distraction mode (current window is center
+  " aligned with equal paddings to left and right) then uncomment the line
+  " below.
+  " Plug 'junegunn/goyo.vim'
+
+  " todo.txt syntax highlighting with additional key mappings.
+  Plug 'freitass/todo.txt-vim'
+
+call plug#end()
+
+
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Options
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " During searching, take the case into the account when using capital letters.
@@ -149,46 +191,4 @@ let &t_ut=''
 let &t_SI = "\e[5 q"
 let &t_SR = "\e[3 q"
 let &t_EI = "\e[2 q"
-
-
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" Plugins
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" Automatically bootstrap vim-plug plugins.
-let data_dir = has('nvim') ? stdpath('data') . '/site' : '~/.vim'
-if empty(glob(data_dir . '/autoload/plug.vim'))
-  silent execute '!curl -fLo '.data_dir.'/autoload/plug.vim --create-dirs  https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim'
-  autocmd VimEnter * PlugInstall --sync | source $MYVIMRC
-endif
-
-" Define external plugins with vim-plug.
-" plug#begin([PLUG_HOME]) supports providing the directory where to install
-" Vim plugins. When not provided, it will use platform-specific Vim/Neovim
-" independent path, which is preferred.
-call plug#begin()
-
-  " Simplify commenting out things.
-  Plug 'tpope/vim-commentary'
-
-  " Custom theme.
-  Plug 'morhetz/gruvbox'
-
-  " Status bar plugin.
-  Plug 'vim-airline/vim-airline'
-
-  " Fuzzy search (fzf) plugin.
-  Plug 'junegunn/fzf'
-
-  " Useful fzf-based Vim commands and mappings.
-  Plug 'junegunn/fzf.vim'
-
-  " If I want to enable full distraction mode (current window is center
-  " aligned with equal paddings to left and right) then uncomment the line
-  " below.
-  " Plug 'junegunn/goyo.vim'
-
-  " todo.txt syntax highlighting with additional key mappings.
-  Plug 'freitass/todo.txt-vim'
-
-call plug#end()
 
