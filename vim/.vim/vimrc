@@ -29,6 +29,9 @@ call plug#begin()
   " Simplify commenting out things.
   Plug 'tpope/vim-commentary'
 
+  " Better work with text object surrounds like braces.
+  Plug 'tpope/vim-surround'
+
   " Custom theme.
   Plug 'morhetz/gruvbox'
 
