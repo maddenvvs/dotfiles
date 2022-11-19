@@ -140,7 +140,7 @@ function delete_package() {
   while IFS= read -r -d '' package_dir; do
     target_package_dir="$(normalize "${TARGET_DIR}/$package_dir")"
     commands+=( "find '${target_package_dir}' -type d -empty -delete" )
-  done < <(find "${target}" -mindepth 1 -type d -depth -print0)
+  done < <(find "." -mindepth 1 -type d -depth -print0)
 
   # Restore original working directory.
   popd
