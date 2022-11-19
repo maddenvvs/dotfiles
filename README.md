@@ -1,6 +1,6 @@
 ## How to install ##
 ```zsh
-zsh -c "$(curl -fsSL https://raw.githubusercontent.com/maddenvvs/.dotfiles/main/install)"
+zsh -c "$(curl -fsSL https://raw.githubusercontent.com/maddenvvs/dotfiles/main/install)"
 ```
 
 ### Useful links
