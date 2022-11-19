@@ -5,6 +5,90 @@ if [[ -r "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh" ]]
   source "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh"
 fi
 
+
+###############################################################################
+# Plugins
+###############################################################################
+
+# Configure Zi paths to use during its and its' plugins installation.
+typeset -A ZI
+ZI[HOME_DIR]="${ZDOTDIR}/.zi"
+ZI[BIN_DIR]="${ZI[HOME_DIR]}/bin"
+
+# Zi-generated installation script.
+if [[ ! -f "${ZI[BIN_DIR]}/zi.zsh" ]]; then
+  print -P "%F{33}▓▒░ %F{160}Installing (%F{33}z-shell/zi%F{160})…%f"
+  command mkdir -p "${ZI[HOME_DIR]}" && command chmod go-rwX "${ZI[HOME_DIR]}"
+  command git clone -q --depth=1 --branch "main" https://github.com/z-shell/zi "${ZI[BIN_DIR]}" && \
+    print -P "%F{33}▓▒░ %F{34}Installation successful.%f%b" || \
+    print -P "%F{160}▓▒░ The clone has failed.%f%b"
+fi
+source "${ZI[BIN_DIR]}/zi.zsh"
+autoload -Uz _zi
+(( ${+_comps} )) && _comps[zi]=_zi
+
+# Add Meta Plugins Zi Annex.
+# https://wiki.zshell.dev/ecosystem/annexes/meta-plugins
+zi light z-shell/z-a-meta-plugins
+
+# Install auxiliary modules required for Zi itself.
+zi light @annexes
+
+# Install JetBrains font.
+zi ice if"[[ $OSTYPE = linux* ]]" \
+  id-as"jetbrains-font-linux" \
+  from"gh-r" \
+  bpick"JetBrainsMono.zip" \
+  extract \
+  nocompile \
+  depth"1" \
+  atclone="mkdir -p ${HOME}/.local/share/fonts/; rm -f *Windows*; mv -vf *.ttf ${HOME}/.local/share/fonts/; fc-cache -v -f" \
+  atpull"%atclone"
+zi light ryanoasis/nerd-fonts
+
+zi ice if"[[ -d ${HOME}/Library/Fonts ]] && [[ $OSTYPE = darwin* ]]" \
+  id-as"jetbrains-font" \
+  from"gh-r" \
+  bpick"JetBrainsMono.zip" \
+  extract \
+  nocompile \
+  depth"1" \
+  atclone="rm -f *Windows*; mv -vf *.ttf ${HOME}/Library/Fonts/" \
+  atpull"%atclone"
+zi light ryanoasis/nerd-fonts
+
+# Install Powerlevel10k theme.
+zi ice atinit'POWERLEVEL9K_DISABLE_CONFIGURATION_WIZARD=true' \
+       atload"[[ ! -f ${ZDOTDIR}/.p10k.zsh ]] || source ${ZDOTDIR}/.p10k.zsh" \
+       depth=1 nocd
+zi light romkatv/powerlevel10k
+
+# Docker CLI completion.
+zi ice as"completion"
+zi snippet https://github.com/docker/cli/blob/master/contrib/completion/zsh/_docker
+
+# Install fzf with key bindings.
+zi pack"bgn-binary+keys" for fzf
+
+# Replace zsh's default completion selection menu with fzf.
+zi light Aloxaf/fzf-tab
+
+# Install zsh-autosuggestions, zsh-completions, F-Sy-H.
+# These plugins can be installed like "zi light @zsh-users+fast", but I wanted
+# to have a different theme for F-Sy-H ("default" instead of "z-shell").
+# Ice configurations were taken from meta plugin definition:
+# https://github.com/z-shell/z-a-meta-plugins/blob/main/z-a-meta-plugins.plugin.zsh
+zi ice pick"/dev/null"
+zi light zsh-users/zsh-completions
+
+zi ice atinit"ZI[COMPINIT_OPTS]=-C; zicompinit; zicdreplay;" \
+       atload"fast-theme default &>/dev/null;"
+zi light z-shell/F-Sy-H
+
+zi ice atload'_zsh_autosuggest_start;'
+zi light zsh-users/zsh-autosuggestions
+
+
 ###############################################################################
 # Variables
 ###############################################################################
@@ -123,89 +207,6 @@ alias dff="open_config_file"
 
 # Alias for Zi plugin update.
 alias zu='zi self-update && zi update --parallel --reset --all'
-
-
-###############################################################################
-# Plugins
-###############################################################################
-
-# Configure Zi paths to use during its and its' plugins installation.
-typeset -A ZI
-ZI[HOME_DIR]="${ZDOTDIR}/.zi"
-ZI[BIN_DIR]="${ZI[HOME_DIR]}/bin"
-
-# Zi-generated installation script.
-if [[ ! -f "${ZI[BIN_DIR]}/zi.zsh" ]]; then
-  print -P "%F{33}▓▒░ %F{160}Installing (%F{33}z-shell/zi%F{160})…%f"
-  command mkdir -p "${ZI[HOME_DIR]}" && command chmod go-rwX "${ZI[HOME_DIR]}"
-  command git clone -q --depth=1 --branch "main" https://github.com/z-shell/zi "${ZI[BIN_DIR]}" && \
-    print -P "%F{33}▓▒░ %F{34}Installation successful.%f%b" || \
-    print -P "%F{160}▓▒░ The clone has failed.%f%b"
-fi
-source "${ZI[BIN_DIR]}/zi.zsh"
-autoload -Uz _zi
-(( ${+_comps} )) && _comps[zi]=_zi
-
-# Add Meta Plugins Zi Annex.
-# https://wiki.zshell.dev/ecosystem/annexes/meta-plugins
-zi light z-shell/z-a-meta-plugins
-
-# Install auxiliary modules required for Zi itself.
-zi light @annexes
-
-# Install JetBrains font.
-zi ice if"[[ $OSTYPE = linux* ]]" \
-  id-as"jetbrains-font-linux" \
-  from"gh-r" \
-  bpick"JetBrainsMono.zip" \
-  extract \
-  nocompile \
-  depth"1" \
-  atclone="mkdir -p ${HOME}/.local/share/fonts/; rm -f *Windows*; mv -vf *.ttf ${HOME}/.local/share/fonts/; fc-cache -v -f" \
-  atpull"%atclone"
-zi light ryanoasis/nerd-fonts
-
-zi ice if"[[ -d ${HOME}/Library/Fonts ]] && [[ $OSTYPE = darwin* ]]" \
-  id-as"jetbrains-font" \
-  from"gh-r" \
-  bpick"JetBrainsMono.zip" \
-  extract \
-  nocompile \
-  depth"1" \
-  atclone="rm -f *Windows*; mv -vf *.ttf ${HOME}/Library/Fonts/" \
-  atpull"%atclone"
-zi light ryanoasis/nerd-fonts
-
-# Install Powerlevel10k theme.
-zi ice atinit'POWERLEVEL9K_DISABLE_CONFIGURATION_WIZARD=true' \
-       atload"[[ ! -f ${ZDOTDIR}/.p10k.zsh ]] || source ${ZDOTDIR}/.p10k.zsh" \
-       depth=1 nocd
-zi light romkatv/powerlevel10k
-
-# Docker CLI completion.
-zi ice as"completion"
-zi snippet https://github.com/docker/cli/blob/master/contrib/completion/zsh/_docker
-
-# Install fzf with key bindings.
-zi pack"bgn-binary+keys" for fzf
-
-# Replace zsh's default completion selection menu with fzf.
-zi light Aloxaf/fzf-tab
-
-# Install zsh-autosuggestions, zsh-completions, F-Sy-H.
-# These plugins can be installed like "zi light @zsh-users+fast", but I wanted
-# to have a different theme for F-Sy-H ("default" instead of "z-shell").
-# Ice configurations were taken from meta plugin definition:
-# https://github.com/z-shell/z-a-meta-plugins/blob/main/z-a-meta-plugins.plugin.zsh
-zi ice pick"/dev/null"
-zi light zsh-users/zsh-completions
-
-zi ice atinit"ZI[COMPINIT_OPTS]=-C; zicompinit; zicdreplay;" \
-       atload"fast-theme default &>/dev/null;"
-zi light z-shell/F-Sy-H
-
-zi ice atload'_zsh_autosuggest_start;'
-zi light zsh-users/zsh-autosuggestions
 
 
 ###############################################################################
