@@ -4,7 +4,7 @@ set -euo pipefail
 
 readonly DOTFILES="${HOME}/.config/dotfiles"
 readonly LOCAL_STOW="${DOTFILES}/bin/.local/bin/stow"
-readonly DOTFILES_GIT="https://github.com/maddenvvs/.dotfiles.git"
+readonly DOTFILES_GIT="https://github.com/maddenvvs/dotfiles.git"
 readonly PACKAGES=(\
   "bin" \
   "git" \
