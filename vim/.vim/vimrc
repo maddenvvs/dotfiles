@@ -41,6 +41,9 @@ call plug#begin()
   " Useful fzf-based Vim commands and mappings.
   Plug 'junegunn/fzf.vim'
 
+  " Linting and autosuggestions.
+  Plug 'dense-analysis/ale'
+
   " If I want to enable full distraction mode (current window is center
   " aligned with equal paddings to left and right) then uncomment the line
   " below.
@@ -103,7 +106,7 @@ set autoread
 
 " Better display of non-printable characters.
 set list
-set listchars=tab:»\ ,space:·,extends:›,precedes:‹,nbsp:␣
+set listchars=tab:»\ ,space:•,extends:›,precedes:‹,nbsp:␣
 
 " Enable True Color support if possible.
 if (has("termguicolors"))
@@ -191,4 +194,13 @@ let &t_ut=''
 let &t_SI = "\e[5 q"
 let &t_SR = "\e[3 q"
 let &t_EI = "\e[2 q"
+
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" ALE
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+let g:ale_fixers = {
+\  '*': ['trim_whitespace'],
+\}
+
+let g:ale_fix_on_save = 1
 
