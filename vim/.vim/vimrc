@@ -11,6 +11,17 @@ source $VIMRUNTIME/defaults.vim
 
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" Functions
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+function! SourceIfExists(path)
+  let local_vimrc = fnamemodify(expand('<sfile>'), ':p:h').'/'.a:path
+  if filereadable(local_vimrc)
+    execute 'source' local_vimrc
+  endif
+endfunction
+
+
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Plugins
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Automatically bootstrap vim-plug plugins.
@@ -55,6 +66,9 @@ call plug#begin()
   " todo.txt syntax highlighting with additional key mappings.
   Plug 'freitass/todo.txt-vim'
 
+  " Include machine-specific packages.
+  call SourceIfExists(".vimrc.local.packages")
+
 call plug#end()
 
 
@@ -84,6 +98,7 @@ set smartindent
 set smarttab
 set expandtab
 set shiftwidth=2
+set softtabstop=2
 
 " Disable backups and swapfile, use persistent undo instead.
 set nobackup
@@ -206,4 +221,8 @@ let g:ale_fixers = {
 \}
 
 let g:ale_fix_on_save = 1
+
+
+"" Include machine-specific vim config.
+call SourceIfExists(".vimrc.local")
 
