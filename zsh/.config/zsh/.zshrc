@@ -74,20 +74,13 @@ zi pack"bgn-binary+keys" for fzf
 zi light Aloxaf/fzf-tab
 
 # Install zsh-autosuggestions, zsh-completions, F-Sy-H.
-# These plugins can be installed like "zi light @zsh-users+fast", but I wanted
-# to have a different theme for F-Sy-H ("default" instead of "z-shell").
-# Ice configurations were taken from meta plugin definition:
-# https://github.com/z-shell/z-a-meta-plugins/blob/main/z-a-meta-plugins.plugin.zsh
-zi ice pick"/dev/null"
-zi light zsh-users/zsh-completions
+zi light @zsh-users+fast
 
-zi ice atinit"ZI[COMPINIT_OPTS]=-C; zicompinit; zicdreplay;" \
-       atload"fast-theme default &>/dev/null;"
-zi light z-shell/F-Sy-H
-
-zi ice atload'_zsh_autosuggest_start;'
-zi light zsh-users/zsh-autosuggestions
-
+# Choose "default" theme for F-Sy-H plugin instead of "z-shell" provided by
+# @zsh-users+fast Zi package.
+if command -v fast-theme &>/dev/null ; then
+  fast-theme default &>/dev/null
+fi
 
 ###############################################################################
 # Variables
@@ -190,7 +183,7 @@ alias l="ls -lAhF ${colorflag}"
 alias duc='du -sh $(ls -A) | sort -h -r'
 
 # Dotfiles management.
-function open_config_file() {
+function dff() {
   local file_to_edit
 
   pushd "${DOTFILES}" &>/dev/null
@@ -203,7 +196,6 @@ function open_config_file() {
 }
 
 alias dtf="cd ${DOTFILES}"
-alias dff="open_config_file"
 
 # Alias for Zi plugin update.
 alias zu='zi self-update && zi update --parallel --reset --all'
