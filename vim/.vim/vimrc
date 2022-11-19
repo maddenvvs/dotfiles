@@ -134,6 +134,11 @@ endif
 " Background color brightness.
 set background=dark
 
+" Use regular clipboard register (* and +) for yank/paste/delete operations.
+set clipboard=unnamed
+if has('unnamedplus')
+  set clipboard+=unnamedplus
+endif
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Key bindings
@@ -158,6 +163,14 @@ noremap <leader>/ :Commentary<cr>
 " The displayed filelist depends on $FZF_DEFAULT_COMMAND environment variable
 " defined in zsh configuration files.
 nnoremap <leader>p :Files<cr>
+
+" Maintain Visual Mode after shifting > and <.
+xnoremap < <gv
+xnoremap > >gv
+
+" Move visual blocks down and up.
+xnoremap J :m '>+1<CR>gv=gv
+xnoremap K :m '<-2<CR>gv=gv
 
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
