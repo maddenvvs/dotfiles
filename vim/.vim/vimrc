@@ -196,12 +196,12 @@ inoremap <C-s>     <C-O>:update<cr>
 nnoremap <C-s>     :update<cr>
 
 " Comment/uncomment using tpope/commentary plugin.
-noremap <leader>/ :Commentary<cr>
+noremap <Leader>/ :Commentary<cr>
 
 " Ctrl-P behaviour like in VS Code.
 " The displayed filelist depends on $FZF_DEFAULT_COMMAND environment variable
 " defined in zsh configuration files.
-nnoremap <leader>p :Files<cr>
+nnoremap <Leader>p :Files<cr>
 
 " Maintain Visual Mode after shifting > and <.
 xnoremap < <gv
