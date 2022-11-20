@@ -75,6 +75,17 @@ call plug#end()
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Options
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" Enable file type detection. Use the default filetype settings, also load
+" indent files, to automatically do language-dependent indenting.
+if has('autocmd')
+  filetype plugin indent on
+endif
+
+" Enable sytnax support.
+if has('syntax') && !exists('g:syntax_on')
+  syntax enable
+endif
+
 " Encoding configuration.
 set encoding=utf-8
 set fileencoding=utf-8
@@ -97,6 +108,9 @@ set ignorecase
 set smartcase
 
 " Disable error bell sound.
+set noerrorbells
+set visualbell
+set t_vb=
 set belloff=all
 
 " Add vertical line denoting 80 symbols border.
