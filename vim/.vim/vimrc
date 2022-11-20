@@ -220,17 +220,6 @@ nnoremap N Nzzzv
 
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" Misc
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" Make :h and :help to open in a new tab instead of a new split window.
-" Taken from here: https://stackoverflow.com/a/3132202
-cnoreabbrev <expr> h
-  \ getcmdtype() == ":" && getcmdline() == 'h' ? 'tab help' : 'h'
-cnoreabbrev <expr> help
-  \ getcmdtype() == ":" && getcmdline() == 'help' ? 'tab help' : 'help'
-
-
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Gruvbox
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Use medium contrast variant of the theme.
