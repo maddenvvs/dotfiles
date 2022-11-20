@@ -82,6 +82,7 @@ if command -v fast-theme &>/dev/null ; then
   fast-theme default &>/dev/null
 fi
 
+
 ###############################################################################
 # Variables
 ###############################################################################
@@ -94,7 +95,8 @@ DOTFILES="${HOME}/.config/dotfiles"
 
 # Specify default command used on every fzf invocation when there is no initial
 # list available (when fzf tries to read the list from stdin instead of a pipe).
-export FZF_DEFAULT_COMMAND="find . -path '*/.git/*' -prune -o -print"
+export FZF_DEFAULT_COMMAND="find * -path '*/.git/*' -prune -o -print 2>/dev/null"
+
 
 ###############################################################################
 # Options
