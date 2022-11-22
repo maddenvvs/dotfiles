@@ -117,7 +117,7 @@ set belloff=all
 set colorcolumn=80
 
 " Give some space around the cursor in both directions.
-set scrolloff=5
+set scrolloff=999
 set sidescrolloff=5
 
 " Enable current line highlighting.
@@ -213,10 +213,6 @@ xnoremap K :m '<-2<CR>gv=gv
 
 " Clear the highlighting of :set hlsearch.
 nnoremap <silent> <C-L> :nohlsearch<C-R>=has('diff')?'<Bar>diffupdate':''<CR><CR><C-L>
-
-" Make next found search item to center on the line it's found in.
-nnoremap n nzzzv
-nnoremap N Nzzzv
 
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
