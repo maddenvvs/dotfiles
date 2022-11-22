@@ -229,6 +229,9 @@ nnoremap <Leader>e :Lexplore<CR>
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Netrw
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" Prevent banner in the top of the Netrw window from showing.
+let g:netrw_banner=0
+
 " Tree style view of directories.
 let g:netrw_liststyle=3
 
