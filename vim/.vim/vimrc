@@ -145,6 +145,9 @@ if has('persistent_undo')
   call mkdir(&undodir, "p", 0700)
 endif
 
+" Don't unload a buffer when no longer shown in a window.
+set hidden
+
 " Shorter update time than the 4000ms default, for async vim operations.
 set updatetime=2000
 
@@ -192,16 +195,16 @@ let maplocalleader="\<Space>l"
 nnoremap Y y$
 
 " Save a buffer both in NORMAL in INSERT modes.
-inoremap <C-s>     <C-O>:update<cr>
-nnoremap <C-s>     :update<cr>
+inoremap <C-s> <C-O>:update<CR>
+nnoremap <C-s> :update<CR>
 
 " Comment/uncomment using tpope/commentary plugin.
-noremap <Leader>/ :Commentary<cr>
+noremap <Leader>/ :Commentary<CR>
 
 " Ctrl-P behaviour like in VS Code.
 " The displayed filelist depends on $FZF_DEFAULT_COMMAND environment variable
 " defined in zsh configuration files.
-nnoremap <Leader>p :Files<cr>
+nnoremap <Leader>p :Files<CR>
 
 " Maintain Visual Mode after shifting > and <.
 xnoremap < <gv
@@ -213,6 +216,24 @@ xnoremap K :m '<-2<CR>gv=gv
 
 " Clear the highlighting of :set hlsearch.
 nnoremap <silent> <C-L> :nohlsearch<C-R>=has('diff')?'<Bar>diffupdate':''<CR><CR><C-L>
+
+" Buffer operations.
+nnoremap <Tab> :bnext<CR>
+nnoremap <S-Tab> :bprev<CR>
+nnoremap <Leader>w :bdelete<CR>
+
+" Toggle Netrw explorer view to the left.
+nnoremap <Leader>e :Lexplore<CR>
+
+
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" Netrw
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" Tree style view of directories.
+let g:netrw_liststyle=3
+
+" 30%-width Netrw window size.
+let g:netrw_winsize=30
 
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
