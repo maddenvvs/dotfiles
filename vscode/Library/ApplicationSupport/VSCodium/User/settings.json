@@ -3,6 +3,7 @@
     "editor.fontSize": 14,
     "editor.formatOnSave": true,
     "editor.guides.bracketPairs": "active",
+    "editor.renderWhitespace": "all",
     "editor.trimAutoWhitespace": false,
     "files.autoSave": "onFocusChange",
     "files.trimTrailingWhitespace": true,
