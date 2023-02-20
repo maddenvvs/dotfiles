@@ -6,6 +6,7 @@
     "editor.renderWhitespace": "all",
     "editor.trimAutoWhitespace": false,
     "files.autoSave": "onFocusChange",
+    "files.insertFinalNewline": true,
     "files.trimTrailingWhitespace": true,
     "terminal.external.osxExec": "kitty.app",
     "terminal.integrated.cursorBlinking": true,
