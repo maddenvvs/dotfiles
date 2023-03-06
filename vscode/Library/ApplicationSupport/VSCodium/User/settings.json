@@ -13,6 +13,8 @@
   "terminal.integrated.cursorStyle": "line",
   "terminal.integrated.cursorWidth": 2,
   "terminal.integrated.fontSize": 14,
+  "todomd.activatePattern": "**/todo.txt",
+  "todomd.addCreationDate": true,
   "workbench.colorTheme": "Monokai",
   "workbench.iconTheme": "material-icon-theme"
 }
