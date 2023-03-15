@@ -191,6 +191,25 @@ alias dtf="cd ${DOTFILES}"
 alias zu='zi self-update && zi update --parallel --reset --all'
 
 
+# Todos management.
+TODOS_DIR="${HOME}/todos"
+
+function todo() {
+  # Ensure that todos folder exists.
+  mkdir -p "${TODOS_DIR}"
+
+  local todo_file="todo-list"
+  if [[ $# -gt 0 ]]; then
+    todo_file="${1}"
+  fi
+
+  "${EDITOR}" "${TODOS_DIR}/${todo_file}"
+}
+
+# List all todo files.
+alias lstd="l -1 ${TODOS_DIR}"
+
+
 ###############################################################################
 # Misc
 ###############################################################################
