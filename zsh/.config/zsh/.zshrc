@@ -184,19 +184,7 @@ alias l="ls -lAhF ${colorflag}"
 # Show disk usage of a current directory.
 alias duc='du -sh $(ls -A) | sort -h -r'
 
-# Dotfiles management.
-function dff() {
-  local file_to_edit
-
-  pushd "${DOTFILES}" &>/dev/null
-  file_to_edit="$(fzf --preview 'cat {}')"
-  popd &>/dev/null
-
-  if [[ -n "${file_to_edit}" ]] ; then
-    vim "+cd ${DOTFILES}" "${DOTFILES}/${file_to_edit}"
-  fi
-}
-
+# Move to dotfiles directory.
 alias dtf="cd ${DOTFILES}"
 
 # Alias for Zi plugin update.
