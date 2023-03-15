@@ -206,6 +206,12 @@ function todo() {
   "${EDITOR}" "${TODOS_DIR}/${todo_file}"
 }
 
+# todo() function autocompletion.
+function _todo() {
+  _files -W "${TODOS_DIR}"
+}
+compdef _todo todo
+
 # List all todo files.
 alias lstd="l -1 ${TODOS_DIR}"
 
