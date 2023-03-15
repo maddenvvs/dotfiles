@@ -58,9 +58,6 @@ call plug#begin()
   " Linting and autosuggestions.
   Plug 'dense-analysis/ale'
 
-  " todo.txt syntax highlighting with additional key mappings.
-  Plug 'freitass/todo.txt-vim'
-
   " Include machine-specific packages.
   call SourceIfExists(".vimrc.local.packages")
 
