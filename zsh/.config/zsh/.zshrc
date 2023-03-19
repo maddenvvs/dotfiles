@@ -192,7 +192,7 @@ alias zu='zi self-update && zi update --parallel --reset --all'
 
 
 # Todos management.
-__TODOS_DIR="${HOME}/todos"
+__TODOS_DIR="${HOME}/todo"
 
 function todo() {
   # Ensure that todos folder exists.
