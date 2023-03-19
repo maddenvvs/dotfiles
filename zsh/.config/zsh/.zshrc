@@ -212,9 +212,6 @@ function _todo() {
 }
 compdef _todo todo
 
-# List all todo files.
-alias lstd="l -1 ${__TODOS_DIR}"
-
 
 ###############################################################################
 # Misc
