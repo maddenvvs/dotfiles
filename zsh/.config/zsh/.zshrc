@@ -218,17 +218,16 @@ compdef _todo todo
 
 # Specify default command used on every fzf invocation when there is no initial
 # list available (when fzf tries to read the list from stdin instead of a pipe).
-export FZF_DEFAULT_COMMAND="command find -L . -mindepth 1 \
-  -path '*/.git/*' -prune -o \
-  -print 2>/dev/null"
-
-# Specify default commands for Ctrl-T and Alt-C commands. Inspired from here:
+# Inspired from here:
 # https://github.com/junegunn/fzf/blob/master/shell/key-bindings.zsh
-export FZF_CTRL_T_COMMAND="command find -L . -mindepth 1 \
+export FZF_DEFAULT_COMMAND="command find -L . -mindepth 1 \
   -path '*/.git/*' -prune -o \
   -type f -print -o \
   -type d -print -o \
   -type l -print 2>/dev/null | cut -b3-"
+
+# Specify default commands for Ctrl-T and Alt-C commands.
+export FZF_CTRL_T_COMMAND="${FZF_DEFAULT_COMMAND}"
 export FZF_ALT_C_COMMAND="command find -L . -mindepth 1 \
   -path '*/.git/*' -prune -o \
   -type d -print 2>/dev/null | cut -b3-"
