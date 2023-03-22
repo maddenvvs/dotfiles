@@ -93,10 +93,6 @@ export PATH="${HOME}/.local/bin:${PATH}"
 # The folder where dotfiles are stored.
 DOTFILES="${HOME}/.config/dotfiles"
 
-# Specify default command used on every fzf invocation when there is no initial
-# list available (when fzf tries to read the list from stdin instead of a pipe).
-export FZF_DEFAULT_COMMAND="find * -path '*/.git/*' -prune -o -print 2>/dev/null"
-
 
 ###############################################################################
 # Options
@@ -191,7 +187,10 @@ alias dtf="cd ${DOTFILES}"
 alias zu='zi self-update && zi update --parallel --reset --all'
 
 
-# Todos management.
+###############################################################################
+# Todos
+###############################################################################
+
 __TODOS_DIR="${HOME}/todo"
 
 function todo() {
@@ -211,6 +210,35 @@ function _todo() {
   _files -W "${__TODOS_DIR}"
 }
 compdef _todo todo
+
+
+###############################################################################
+# fzf (https://github.com/junegunn/fzf)
+###############################################################################
+
+# Specify default command used on every fzf invocation when there is no initial
+# list available (when fzf tries to read the list from stdin instead of a pipe).
+export FZF_DEFAULT_COMMAND="command find -L . -mindepth 1 \
+  -path '*/.git/*' -prune -o \
+  -print 2>/dev/null"
+
+# Specify default commands for Ctrl-T and Alt-C commands. Inspired from here:
+# https://github.com/junegunn/fzf/blob/master/shell/key-bindings.zsh
+export FZF_CTRL_T_COMMAND="command find -L . -mindepth 1 \
+  -path '*/.git/*' -prune -o \
+  -type f -print -o \
+  -type d -print -o \
+  -type l -print 2>/dev/null | cut -b3-"
+export FZF_ALT_C_COMMAND="command find -L . -mindepth 1 \
+  -path '*/.git/*' -prune -o \
+  -type d -print 2>/dev/null | cut -b3-"
+
+# Alt-C combination doesn't work on MacOS, producing 'ç' character. Remap the
+# character to a desired behaviour. Taken from here:
+# https://github.com/junegunn/fzf/issues/164#issuecomment-581837757
+if [[ $OSTYPE == "darwin"* ]]; then
+  bindkey -M emacs 'ç' fzf-cd-widget
+fi
 
 
 ###############################################################################
