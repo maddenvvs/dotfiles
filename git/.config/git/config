@@ -29,4 +29,3 @@
 # Allow machine-specific overrides.
 [include]
 	path = config.local
-
