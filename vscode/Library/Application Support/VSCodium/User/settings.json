@@ -1,6 +1,5 @@
 {
-  "editor.fontFamily": "JetBrainsMonoNL Nerd Font Mono, Menlo, Monaco, 'Courier New', monospace",
-  "editor.fontSize": 14,
+  "editor.fontSize": 16,
   "editor.formatOnSave": true,
   "editor.guides.bracketPairs": "active",
   "editor.renderWhitespace": "all",
@@ -14,8 +13,8 @@
   "terminal.integrated.cursorWidth": 2,
   "terminal.integrated.fontSize": 14,
   "workbench.colorTheme": "Monokai",
-  "workbench.iconTheme": "material-icon-theme",
   "[python]": {
-    "editor.defaultFormatter": "ms-python.black-formatter",
-  }
+    "editor.defaultFormatter": "ms-python.black-formatter"
+  },
+  "editor.fontFamily": "JetBrainsMonoNL Nerd Font Mono, Menlo, Monaco, 'Courier New', monospace"
 }
