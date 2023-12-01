@@ -10,7 +10,7 @@ readonly PACKAGES=(\
   "git" \
   "kitty" \
   "vim" \
-  "vscode" \
+  # "vscode" \
   "zsh" \
 )
 
