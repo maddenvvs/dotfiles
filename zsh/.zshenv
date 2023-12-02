@@ -9,6 +9,15 @@ export ZDOTDIR="${ZDOTDIR:-${HOME}/.config/zsh}"
 export EDITOR='vim'
 export VISUAL='vim'
 
+# Homebrew configuration.
+if [[ -x /opt/homebrew/bin/brew ]]; then
+  # Export modified by Homebrew environment variables: $PATH, $MANPATH, ...
+  eval $(/opt/homebrew/bin/brew shellenv)
+
+  # Disable Homebrew analytics collection (https://docs.brew.sh/Analytics).
+  export HOMEBREW_NO_ANALYTICS=1
+fi
+
 # Load machine-specific configuration.
 readonly ZSHENV_LOCAL="${ZDOTDIR}/.zshenv.local"
 [[ -f "${ZSHENV_LOCAL}" ]] && source "${ZSHENV_LOCAL}"
