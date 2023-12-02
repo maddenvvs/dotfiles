@@ -82,6 +82,9 @@ if command -v fast-theme &>/dev/null ; then
   fast-theme default &>/dev/null
 fi
 
+# Install Homebrew (brew) completions.
+zi pack for brew-completions
+
 
 ###############################################################################
 # Variables
