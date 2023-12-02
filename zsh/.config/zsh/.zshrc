@@ -167,6 +167,23 @@ bindkey -M emacs '^[[1;9C' forward-word
 bindkey -M emacs '^[[1;5D' backward-word
 bindkey -M emacs '^[[1;9D' backward-word
 
+# Setup bindings for both smkx and rmkx key variants.
+# https://github.com/kovidgoyal/kitty/discussions/5248#discussioncomment-3071398
+# Home
+bindkey '\e[H'  beginning-of-line
+bindkey '\eOH'  beginning-of-line
+# End
+bindkey '\e[F'  end-of-line
+bindkey '\eOF'  end-of-line
+# Delete
+bindkey '\e[3~' delete-char
+# Backspace
+bindkey '\e?' backward-delete-char
+# PageUp
+bindkey '\e[5~' up-line-or-history
+# PageDown
+bindkey '\e[6~' down-line-or-history
+
 
 ###############################################################################
 # Aliases
