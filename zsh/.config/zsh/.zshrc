@@ -76,14 +76,14 @@ zi light Aloxaf/fzf-tab
 # Install zsh-autosuggestions, zsh-completions, F-Sy-H.
 zi light @zsh-users+fast
 
+# Install Homebrew (brew) completions.
+zi pack for brew-completions
+
 # Choose "default" theme for F-Sy-H plugin instead of "z-shell" provided by
 # @zsh-users+fast Zi package.
 if command -v fast-theme &>/dev/null ; then
   fast-theme default &>/dev/null
 fi
-
-# Install Homebrew (brew) completions.
-zi pack for brew-completions
 
 
 ###############################################################################
