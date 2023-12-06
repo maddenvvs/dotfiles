@@ -206,6 +206,12 @@ alias dtf="cd ${DOTFILES}"
 # Alias for Zi plugin update.
 alias zu='zi self-update && zi update --parallel --reset --all'
 
+# Alias for Homebrew update.
+alias bu='brew update && brew upgrade'
+
+# Alias for update of the setup.
+alias au='bu; zu'
+
 
 ###############################################################################
 # Notes
