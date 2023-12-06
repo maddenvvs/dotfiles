@@ -213,7 +213,7 @@ alias zu='zi self-update && zi update --parallel --reset --all'
 
 __NOTES_DIR="${HOME}/notes"
 
-function _note() {
+function note() {
   # Ensure that notes folder exists.
   mkdir -p "${__NOTES_DIR}"
 
@@ -229,9 +229,7 @@ function _note() {
 function _note_autocompletion() {
   _files -W "${__NOTES_DIR}"
 }
-compdef _note_autocompletion _note
-
-alias nn="_note"
+compdef _note_autocompletion note
 
 
 ###############################################################################
