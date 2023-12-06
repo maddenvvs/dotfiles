@@ -208,28 +208,30 @@ alias zu='zi self-update && zi update --parallel --reset --all'
 
 
 ###############################################################################
-# Todos
+# Notes
 ###############################################################################
 
-__TODOS_DIR="${HOME}/todo"
+__NOTES_DIR="${HOME}/notes"
 
-function todo() {
-  # Ensure that todos folder exists.
-  mkdir -p "${__TODOS_DIR}"
+function _note() {
+  # Ensure that notes folder exists.
+  mkdir -p "${__NOTES_DIR}"
 
-  local todo_file="todo-list"
+  local notes_file="all"
   if [[ $# -gt 0 ]]; then
-    todo_file="${1}"
+    notes_file="${1}"
   fi
 
-  "${EDITOR}" "${__TODOS_DIR}/${todo_file}"
+  "${EDITOR}" "${__NOTES_DIR}/${notes_file}"
 }
 
-# todo() function autocompletion.
-function _todo() {
-  _files -W "${__TODOS_DIR}"
+# note() function autocompletion.
+function _note_autocompletion() {
+  _files -W "${__NOTES_DIR}"
 }
-compdef _todo todo
+compdef _note_autocompletion _note
+
+alias nn="_note"
 
 
 ###############################################################################
