@@ -8,7 +8,7 @@
   "files.autoSave": "onFocusChange",
   "files.insertFinalNewline": true,
   "files.trimTrailingWhitespace": true,
-  "terminal.external.osxExec": "kitty.app",
+  "terminal.external.osxExec": "Alacritty.app",
   "terminal.integrated.cursorBlinking": true,
   "terminal.integrated.cursorStyle": "line",
   "terminal.integrated.cursorWidth": 2,
