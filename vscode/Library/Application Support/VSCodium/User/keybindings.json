@@ -1,0 +1,9 @@
+// Place your key bindings in this file to override the defaults
+[
+    // Make ctrl+§ to work on MacOS
+    {
+        "key": "ctrl+[IntlBackslash]",
+        "command": "workbench.action.terminal.toggleTerminal",
+        "when": "terminal.active"
+    },
+]
