@@ -12,6 +12,7 @@
   "terminal.integrated.fontSize": 16,
   "terminal.integrated.hideOnStartup": "always",
   "terminal.integrated.persistentSessionReviveProcess": "never",
+  "update.mode": "none",
   "workbench.colorTheme": "Monokai",
   "workbench.iconTheme": "material-icon-theme",
   "[python]": {
