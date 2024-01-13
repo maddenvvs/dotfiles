@@ -13,6 +13,7 @@
   "terminal.integrated.hideOnStartup": "always",
   "terminal.integrated.persistentSessionReviveProcess": "never",
   "update.mode": "none",
+  "window.newWindowDimensions": "maximized",
   "workbench.colorTheme": "Monokai",
   "workbench.iconTheme": "material-icon-theme",
   "[python]": {
