@@ -31,9 +31,6 @@ autoload -Uz _zi
 # https://wiki.zshell.dev/ecosystem/annexes/meta-plugins
 zi light z-shell/z-a-meta-plugins
 
-# Install auxiliary modules required for Zi itself.
-zi light @annexes
-
 # Install JetBrains font.
 zi ice if"[[ $OSTYPE = linux* ]]" \
   id-as"jetbrains-font-linux" \
@@ -47,7 +44,7 @@ zi ice if"[[ $OSTYPE = linux* ]]" \
 zi light ryanoasis/nerd-fonts
 
 zi ice if"[[ -d ${HOME}/Library/Fonts ]] && [[ $OSTYPE = darwin* ]]" \
-  id-as"jetbrains-font" \
+  id-as"jetbrains-font-macos" \
   from"gh-r" \
   bpick"JetBrainsMono.zip" \
   extract \
@@ -63,18 +60,20 @@ zi ice atinit'POWERLEVEL9K_DISABLE_CONFIGURATION_WIZARD=true' \
        depth=1 nocd
 zi light romkatv/powerlevel10k
 
-# Docker CLI completion.
-zi ice as"completion"
-zi snippet https://github.com/docker/cli/blob/master/contrib/completion/zsh/_docker
-
-# Install fzf with key bindings.
-zi pack"bgn-binary+keys" for fzf
+# Add key bindings provided by fzf.
+zi ice has'fzf'
+zi snippet https://raw.githubusercontent.com/junegunn/fzf/master/shell/key-bindings.zsh
 
 # Replace zsh's default completion selection menu with fzf.
+zi ice has'fzf'
 zi light Aloxaf/fzf-tab
 
 # Install zsh-autosuggestions, zsh-completions, F-Sy-H.
 zi light @zsh-users+fast
+
+# Docker CLI completion.
+zi ice as"completion"
+zi snippet https://github.com/docker/cli/blob/master/contrib/completion/zsh/_docker
 
 # Install Homebrew (brew) completions.
 zi pack for brew-completions
@@ -84,6 +83,11 @@ zi pack for brew-completions
 if command -v fast-theme &>/dev/null ; then
   fast-theme default &>/dev/null
 fi
+
+# Fix group completion format '%F{yellow}-- %d --%f' in Aloxaf/fzf-tab:
+# https://github.com/Aloxaf/fzf-tab/issues/24#issuecomment-1500970064
+zstyle -d ':completion:*' format
+zstyle ':completion:*:descriptions' format '[%d]'
 
 
 ###############################################################################
