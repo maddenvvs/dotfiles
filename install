@@ -1,8 +1,5 @@
 #!/bin/bash
 
-set -euo pipefail
-
-readonly STOW_PATH="/opt/homebrew/bin/stow"
 readonly DOTFILES="${HOME}/.config/dotfiles"
 readonly DOTFILES_GIT="https://github.com/maddenvvs/dotfiles.git"
 readonly PACKAGES=(\
@@ -17,5 +14,5 @@ readonly PACKAGES=(\
 [[ ! -d "${DOTFILES}" ]] && git clone "${DOTFILES_GIT}" "${DOTFILES}"
 
 # Install all stow packages.
-"${STOW_PATH}" --no-folding -v -t "${HOME}" -d "${DOTFILES}" -R "${PACKAGES[@]}"
+stow --no-folding -v -t "${HOME}" -d "${DOTFILES}" -R "${PACKAGES[@]}"
 
