@@ -1,6 +1,6 @@
 {
   "editor.fontFamily": "JetBrainsMonoNL Nerd Font Mono, Menlo, Monaco, 'Courier New', monospace",
-  "editor.fontSize": 16,
+  "editor.fontSize": 14,
   "editor.formatOnSave": true,
   "editor.guides.bracketPairs": "active",
   "editor.renderWhitespace": "all",
@@ -9,11 +9,12 @@
   "files.insertFinalNewline": true,
   "files.trimTrailingWhitespace": true,
   "terminal.external.osxExec": "Alacritty.app",
-  "terminal.integrated.fontSize": 16,
+  "terminal.integrated.fontSize": 14,
   "terminal.integrated.hideOnStartup": "always",
   "terminal.integrated.persistentSessionReviveProcess": "never",
   "update.mode": "none",
   "window.newWindowDimensions": "maximized",
+  "window.zoomLevel": 1,
   "workbench.colorTheme": "Monokai",
   "workbench.iconTheme": "material-icon-theme",
   "[python]": {
