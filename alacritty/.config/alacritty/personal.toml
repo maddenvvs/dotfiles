@@ -4,12 +4,6 @@ size = 18.0
 [font.normal]
 family = "JetBrainsMonoNL Nerd Font Mono"
 
-[[keyboard.bindings]]
-action = "ToggleViMode"
-key = "Space"
-mode = "~Search"
-mods = "Shift"
-
 [mouse]
 hide_when_typing = true
 

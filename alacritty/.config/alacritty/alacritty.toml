@@ -1,1 +1,4 @@
-import = ["~/.config/alacritty/personal.toml", "~/.config/alacritty/local-override.toml"]
+import = [
+    "~/.config/alacritty/personal.toml",
+    "~/.config/alacritty/local-override.toml"
+]
