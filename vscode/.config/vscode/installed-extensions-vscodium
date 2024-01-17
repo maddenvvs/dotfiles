@@ -5,6 +5,8 @@ hashicorp.terraform
 ms-python.black-formatter
 ms-python.isort
 ms-python.python
+oderwat.indent-rainbow
 PKief.material-icon-theme
 rust-lang.rust-analyzer
 timonwong.shellcheck
+usernamehw.errorlens
