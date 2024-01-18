@@ -95,9 +95,10 @@ zstyle ':completion:*:descriptions' format '[%d]'
 ###############################################################################
 
 # HomeBrew coreutils (ls, dircolors, ...) adjustments.
-if [[ -n "${HOMEBREW_PREFIX}" ]]; then
-  export PATH="${HOMEBREW_PREFIX}/opt/coreutils/libexec/gnubin:${PATH}"
-  export MANPATH="${HOMEBREW_PREFIX}/opt/coreutils/libexec/gnuman:${MANPATH}"
+HOMEBREW_COREUTILS_PATH="${HOMEBREW_PREFIX}/opt/coreutils/libexec"
+if [[ -d "${HOMEBREW_COREUTILS_PATH}" ]]; then
+  export PATH="${HOMEBREW_COREUTILS_PATH}/gnubin:${PATH}"
+  export MANPATH="${HOMEBREW_COREUTILS_PATH}/gnuman:${MANPATH}"
 fi
 
 # Add local binaries for my personal use.
@@ -204,7 +205,11 @@ bindkey '\e[6~' down-line-or-history
 ###############################################################################
 
 # Better ls.
-alias l="ls -lAhF --color --group-directories-first"
+if ls --group-directories-first . >/dev/null 2>&1 ; then
+  alias l="ls -lAhF --color=always --group-directories-first"
+else
+  alias l="ls -lAhF --color=always"
+fi
 
 # Show disk usage of a current directory.
 alias duc='du -sh $(ls -A) | sort -h -r'
