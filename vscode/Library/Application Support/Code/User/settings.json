@@ -5,9 +5,12 @@
   "editor.guides.bracketPairs": "active",
   "editor.renderWhitespace": "all",
   "editor.trimAutoWhitespace": false,
+  "extensions.autoUpdate": false,
+  "extensions.ignoreRecommendations": true,
   "files.autoSave": "onFocusChange",
   "files.insertFinalNewline": true,
   "files.trimTrailingWhitespace": true,
+  "telemetry.telemetryLevel": "off", // VSCode Core
   "terminal.external.osxExec": "Alacritty.app",
   "terminal.integrated.fontSize": 14,
   "terminal.integrated.hideOnStartup": "always",
@@ -16,7 +19,9 @@
   "window.newWindowDimensions": "maximized",
   "window.zoomLevel": 1,
   "workbench.colorTheme": "Monokai",
+  "workbench.enableExperiments": false,
   "workbench.iconTheme": "material-icon-theme",
+  "workbench.settings.enableNaturalLanguageSearch": false,
   "[python]": {
     "editor.defaultFormatter": "ms-python.black-formatter"
   },
