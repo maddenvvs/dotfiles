@@ -15,7 +15,7 @@
   "terminal.integrated.fontSize": 14,
   "terminal.integrated.hideOnStartup": "always",
   "terminal.integrated.persistentSessionReviveProcess": "never",
-  "update.mode": "none",
+  "update.mode": "default",
   "window.newWindowDimensions": "maximized",
   "window.zoomLevel": 1,
   "workbench.colorTheme": "Monokai",
