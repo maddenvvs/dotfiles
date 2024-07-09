@@ -1,14 +1,4 @@
 {
   "keyMappings": "# Insert your preferred key mappings here.\n\n# Remap d to <c-d> to better align with Vim.\nunmap d\nmap <c-d> scrollPageDown\n\n# Remap u to <c-u> to better align with Vim.\nunmap u\nmap <c-u> scrollPageUp\n\n# Hard reload.\nmap R reload hard\n\n# Open a link in Incognito window\nmap I LinkHints.activateModeToOpenIncognito\n\n# Allow passing pressed keys to webpage instead of Vimium.\nmap <m-]> passNextKey",
-  "settingsVersion": "2.0.5",
-  "exclusionRules": [
-    {
-      "passKeys": "",
-      "pattern": "https?://mail.google.com/*"
-    },
-    {
-      "passKeys": "",
-      "pattern": "https?://localhost:3000/*"
-    }
-  ]
+  "settingsVersion": "2.1.2"
 }
