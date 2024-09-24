@@ -12,7 +12,7 @@ export VISUAL='vim'
 # Homebrew configuration.
 if [[ -x /opt/homebrew/bin/brew ]]; then
   # Export modified by Homebrew environment variables: $PATH, $MANPATH, ...
-  eval $(/opt/homebrew/bin/brew shellenv)
+  eval $(/opt/homebrew/bin/brew shellenv zsh)
 
   # Disable Homebrew analytics collection (https://docs.brew.sh/Analytics).
   export HOMEBREW_NO_ANALYTICS=1
