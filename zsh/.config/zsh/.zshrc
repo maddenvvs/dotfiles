@@ -94,10 +94,27 @@ zstyle ':completion:*:descriptions' format '[%d]'
 # Variables
 ###############################################################################
 
-# HomeBrew coreutils (ls, dircolors, ...) adjustments.
+# Add `man`'s default search path to be the the last one (see `man manpath`).
+# ZI and Homebrew coreutils package both modify $MANPATH to include their
+# manpage paths. This effectively overrides the default search path for `man`
+# and breaks all the existing MacOS manpages to be accessible via `man`.
+# To fix this, `manpath` provides a way to add the default search path to the
+# overrided ones by adding a colon. Adding the colon to the end provides a way
+# for ZI and Homebrew coreutils packages to override the manpages provided by
+# MacOS if needed.
+# Another possible solution may be to have a separate configuration file for
+# manpages to point to the ZI and Homebrew coreutils packages:
+# https://docs.brew.sh/Tips-N%27-Tricks#macos-terminalapp-enable-the-open-man-page-contextual-menu-item
+if [[ -n $MANPATH ]]; then
+  export MANPATH="${MANPATH%:}:"
+fi
+
+# Homebrew coreutils (ls, dircolors, ...) adjustments.
 HOMEBREW_COREUTILS_PATH="${HOMEBREW_PREFIX}/opt/coreutils/libexec"
 if [[ -d "${HOMEBREW_COREUTILS_PATH}" ]]; then
   export PATH="${HOMEBREW_COREUTILS_PATH}/gnubin:${PATH}"
+
+  # Add coreutils manpages first to override the default MacOS ones.
   export MANPATH="${HOMEBREW_COREUTILS_PATH}/gnuman:${MANPATH}"
 fi
 
