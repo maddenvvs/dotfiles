@@ -258,22 +258,6 @@ let g:airline#extensions#tabline#enabled = 1
 
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" Kitty terminal
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" Vim uses background color erase when Vim theme declares background color.
-" Kitty terminal emulator doesn't support background color erase which leads
-" to incorrect displaying of background color when scrolling. The following
-" line effectively fixes the issue. For more information please see:
-" https://sw.kovidgoyal.net/kitty/faq/#using-a-color-theme-with-a-background-color-does-not-work-well-in-vim
-let &t_ut=''
-
-" Change the cursor in different modes.
-" Normal - block, Insert - bar, Replace - underline.
-let &t_SI = "\e[5 q"
-let &t_SR = "\e[3 q"
-let &t_EI = "\e[2 q"
-
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " ALE
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 let g:ale_fixers = {
