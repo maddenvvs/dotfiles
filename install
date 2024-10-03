@@ -5,6 +5,7 @@ readonly DOTFILES_GIT="https://github.com/maddenvvs/dotfiles.git"
 readonly PACKAGES=(\
   "alacritty" \
   "git" \
+  "nvim" \
   "vim" \
   "vscode" \
   "zsh" \
