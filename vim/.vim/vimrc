@@ -243,6 +243,14 @@ xnoremap <silent> K :m '<-2<CR>gv=gv
 " Clear the highlighting of ':set hlsearch'.
 nnoremap <silent> <C-L> :nohlsearch<C-R>=has('diff')?'<Bar>diffupdate':''<CR><CR><C-L>
 
+" Make help window to appear vertically.
+" In Vim, help windows always split horizontally and there is no configuration
+" options to make them split vertically.
+augroup vimrc_help
+  autocmd!
+  autocmd BufEnter *.txt if &buftype == 'help' | wincmd L | endif
+augroup END
+
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Netrw
