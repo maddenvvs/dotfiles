@@ -249,8 +249,8 @@ let g:netrw_banner=0
 " Tree style view of directories.
 let g:netrw_liststyle=3
 
-" 30%-width Netrw window size.
-let g:netrw_winsize=30
+" The width of the Netrw window.
+let g:netrw_winsize=20
 
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
