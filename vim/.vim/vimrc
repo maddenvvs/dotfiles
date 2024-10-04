@@ -205,13 +205,6 @@ let mapleader="\<Space>"
 " Set local leader key.
 let maplocalleader="\<Space>l"
 
-" Make Y behave like C and D (do operation from the cursor to the end of line).
-nnoremap <silent> Y y$
-
-" Save a buffer both in NORMAL in INSERT modes.
-inoremap <silent> <C-s> <C-O>:update<CR>
-nnoremap <silent> <C-s> :update<CR>
-
 " Comment/uncomment using tpope/commentary plugin.
 noremap <silent> <Leader>/ :Commentary<CR>
 
@@ -219,6 +212,16 @@ noremap <silent> <Leader>/ :Commentary<CR>
 " The displayed filelist depends on $FZF_DEFAULT_COMMAND environment variable
 " defined in zsh configuration files.
 nnoremap <silent> <Leader>p :Files<CR>
+
+" Toggle Netrw explorer view to the left.
+nnoremap <silent> <Leader>e :Lexplore<CR>
+
+" Make Y behave like C and D (do operation from the cursor to the end of line).
+nnoremap <silent> Y y$
+
+" Save a buffer both in NORMAL in INSERT modes.
+inoremap <silent> <C-s> <C-O>:update<CR>
+nnoremap <silent> <C-s> :update<CR>
 
 " Maintain Visual Mode after shifting > and <.
 xnoremap <silent> < <gv
@@ -228,16 +231,8 @@ xnoremap <silent> > >gv
 xnoremap <silent> J :m '>+1<CR>gv=gv
 xnoremap <silent> K :m '<-2<CR>gv=gv
 
-" Clear the highlighting of :set hlsearch.
+" Clear the highlighting of ':set hlsearch'.
 nnoremap <silent> <C-L> :nohlsearch<C-R>=has('diff')?'<Bar>diffupdate':''<CR><CR><C-L>
-
-" Buffer operations.
-nnoremap <silent> <Tab> :bnext<CR>
-nnoremap <silent> <S-Tab> :bprev<CR>
-nnoremap <silent> <Leader>w :bdelete<CR>
-
-" Toggle Netrw explorer view to the left.
-nnoremap <silent> <Leader>e :Lexplore<CR>
 
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
