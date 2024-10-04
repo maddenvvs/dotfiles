@@ -148,7 +148,16 @@ set nobackup
 set nowritebackup
 set noswapfile
 if has('persistent_undo')
-  set undofile undodir=~/.cache/vim/undo
+  set undofile
+
+  " Use different undo cache folders because undo files are not compatible
+  " between Vim and Neovim.
+  " https://github.com/neovim/neovim/issues/17301#issuecomment-1030660425
+  set undodir=~/.cache/vim/undo
+  if has('nvim')
+    set undodir=~/.cache/nvim/undo
+  endif
+
   call mkdir(&undodir, "p", 0700)
 endif
 
