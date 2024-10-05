@@ -235,10 +235,10 @@ alias duc='du -sh $(ls -A) | sort -h -r'
 alias dtf="cd ${DOTFILES}"
 
 # Alias for Zi plugin update.
-alias zu='zi self-update && zi update --parallel --reset --all'
+alias zu='zi self-update && zi update --parallel --reset --all && zi cclear'
 
 # Alias for Homebrew update.
-alias bu='brew update && brew upgrade'
+alias bu='brew update && brew upgrade && brew cleanup'
 
 # Alias for update of the setup.
 alias au='bu; zu'
