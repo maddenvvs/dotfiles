@@ -1,4 +1,6 @@
+[general]
 import = [
-    "~/.config/alacritty/personal.toml",
-    "~/.config/alacritty/local-override.toml"
+    "personal.toml",
+    "local-override.toml"
 ]
+
