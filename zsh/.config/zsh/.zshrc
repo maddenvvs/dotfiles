@@ -245,31 +245,6 @@ alias au='bu; zu'
 
 
 ###############################################################################
-# Notes
-###############################################################################
-
-__NOTES_DIR="${HOME}/notes"
-
-function note() {
-  # Ensure that notes folder exists.
-  mkdir -p "${__NOTES_DIR}"
-
-  local notes_file="all"
-  if [[ $# -gt 0 ]]; then
-    notes_file="${1}"
-  fi
-
-  "${EDITOR}" "${__NOTES_DIR}/${notes_file}"
-}
-
-# note() function autocompletion.
-function _note_autocompletion() {
-  _files -W "${__NOTES_DIR}"
-}
-compdef _note_autocompletion note
-
-
-###############################################################################
 # fzf (https://github.com/junegunn/fzf)
 ###############################################################################
 
