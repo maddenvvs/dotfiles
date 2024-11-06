@@ -31,29 +31,6 @@ autoload -Uz _zi
 # https://wiki.zshell.dev/ecosystem/annexes/meta-plugins
 zi light z-shell/z-a-meta-plugins
 
-# Install JetBrains font.
-zi ice if"[[ $OSTYPE = linux* ]]" \
-  id-as"jetbrains-font-linux" \
-  from"gh-r" \
-  bpick"JetBrainsMono.zip" \
-  extract \
-  nocompile \
-  depth"1" \
-  atclone="mkdir -p ${HOME}/.local/share/fonts/; rm -f *Windows*; mv -vf *.ttf ${HOME}/.local/share/fonts/; fc-cache -v -f" \
-  atpull"%atclone"
-zi light ryanoasis/nerd-fonts
-
-zi ice if"[[ -d ${HOME}/Library/Fonts ]] && [[ $OSTYPE = darwin* ]]" \
-  id-as"jetbrains-font-macos" \
-  from"gh-r" \
-  bpick"JetBrainsMono.zip" \
-  extract \
-  nocompile \
-  depth"1" \
-  atclone="rm -f *Windows*; mv -vf *.ttf ${HOME}/Library/Fonts/" \
-  atpull"%atclone"
-zi light ryanoasis/nerd-fonts
-
 # Install Powerlevel10k theme.
 zi ice atinit'POWERLEVEL9K_DISABLE_CONFIGURATION_WIZARD=true' \
        atload"[[ ! -f ${ZDOTDIR}/.p10k.zsh ]] || source ${ZDOTDIR}/.p10k.zsh" \
