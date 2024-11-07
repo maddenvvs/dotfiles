@@ -98,6 +98,12 @@ set encoding=utf-8
 set fileencoding=utf-8
 set fileencodings=utf-8
 
+" Avoid constant switching between keyboard layouts.
+" https://stackoverflow.com/questions/3776728/how-to-avoid-constant-switching-to-and-from-english-keyboard-layout-to-type-vim
+set keymap=russian-jcuken
+set iminsert=0
+set imsearch=-1
+
 " Mark that terminal connection is fast.
 set ttyfast
 
@@ -250,6 +256,10 @@ augroup vimrc_help
   autocmd!
   autocmd BufEnter *.txt if &buftype == 'help' | wincmd L | endif
 augroup END
+
+" Remap default keyboard layout change mapping to more confortable.
+" See ':h keymap'.
+inoremap <silent> <C-\> <C-^>
 
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
