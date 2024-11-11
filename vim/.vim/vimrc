@@ -142,7 +142,7 @@ set relativenumber
 
 " Tabs and indenting.
 set autoindent
-set smartindent
+set nosmartindent
 set smarttab
 set expandtab
 set shiftwidth=2
