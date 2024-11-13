@@ -222,6 +222,25 @@ alias au='bu; zu'
 
 
 ###############################################################################
+# Neovim
+###############################################################################
+# Select Neovim with a specified configuration.
+# https://gist.github.com/elijahmanor/b279553c0132bfad7eae23e34ceb593b?permalink_comment_id=5246114#gistcomment-5246114
+function nvims() {
+  local config=$(\
+    find -L "${XDG_CONFIG_HOME:-$HOME/.config}" -mindepth 2 -maxdepth 2 \
+      \( -name init.lua -o -name init.vim \) |\
+    awk -F/ '{print $(NF-1)}' |\
+    sort |\
+    fzf --prompt 'Neovim config: ' --height=~50% --layout=reverse --border --exit-0)
+  if [[ -z "${config}" ]]; then
+    return 0
+  fi
+  NVIM_APPNAME="${config}" nvim "$@"
+}
+
+
+###############################################################################
 # fzf (https://github.com/junegunn/fzf)
 ###############################################################################
 
