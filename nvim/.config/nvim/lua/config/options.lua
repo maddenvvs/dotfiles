@@ -1,16 +1,16 @@
 -- Encoding configuration.
-vim.opt.encoding = 'utf-8'
-vim.opt.fileencoding = 'utf-8'
-vim.opt.fileencodings = { 'utf-8' }
+vim.opt.encoding = "utf-8"
+vim.opt.fileencoding = "utf-8"
+vim.opt.fileencodings = { "utf-8" }
 
 -- Avoid constant switching between keyboard layouts.
 -- https://stackoverflow.com/questions/3776728/how-to-avoid-constant-switching-to-and-from-english-keyboard-layout-to-type-vim
-vim.opt.keymap = 'russian-jcuken'
+vim.opt.keymap = "russian-jcuken"
 vim.opt.iminsert = 0
 vim.opt.imsearch = -1
 
 -- Allow backspacing over everything in insert mode.
-vim.opt.backspace = { 'indent', 'eol' , 'start' }
+vim.opt.backspace = { "indent", "eol", "start" }
 
 -- Do incremental searching when it's possible to timeout.
 vim.opt.incsearch = true
@@ -23,7 +23,7 @@ vim.opt.smartcase = true
 -- Disable error bell sound.
 vim.opt.errorbells = false
 vim.opt.visualbell = false
-vim.opt.belloff = 'all'
+vim.opt.belloff = "all"
 
 -- Add vertical line denoting 80 symbols border.
 vim.opt.colorcolumn = { 80 }
@@ -40,6 +40,7 @@ vim.opt.number = true
 vim.opt.relativenumber = true
 
 -- Tabs and indenting.
+-- Maybe use 'tpope/vim-sleuth' instead?
 vim.opt.autoindent = true
 vim.opt.smartindent = false
 vim.opt.smarttab = true
@@ -53,7 +54,7 @@ vim.opt.backup = false
 vim.opt.writebackup = false
 vim.opt.swapfile = false
 vim.opt.undofile = true
-vim.opt.undodir = { vim.fn.expand('$HOME/.cache/nvim/undo') }
+vim.opt.undodir = { vim.fn.expand("$HOME/.cache/nvim/undo") }
 
 -- Don't unload a buffer when no longer shown in a window.
 vim.opt.hidden = true
@@ -74,27 +75,50 @@ vim.opt.autoread = true
 -- Better display of non-printable characters.
 vim.opt.list = true
 vim.opt.listchars = {
-  tab = '» ',
-  space = '•',
-  extends = '›',
-  precedes = '‹',
-  nbsp = '␣',
+  tab = "» ",
+  space = "·",
+  extends = "›",
+  precedes = "‹",
+  nbsp = "␣",
 }
 
 -- Enable True Color support if possible.
 vim.opt.termguicolors = true
 
--- Use regular clipboard register (* and +) for yank/paste/delete operations.
-vim.opt.clipboard = { 'unnamed', 'unnamedplus' }
+-- Sync clipboard between OS and Neovim.
+--  Schedule the setting after `UiEnter` because it can increase startup-time.
+--  Remove this option if you want your OS clipboard to remain independent.
+--  See `:help 'clipboard'`
+vim.schedule(function()
+  vim.opt.clipboard = { "unnamed", "unnamedplus" }
+end)
 
+-- Decrease mapped sequence wait time.
+-- Displays which-key popup sooner.
+vim.opt.timeoutlen = 300
+
+-- Decrease update time.
+vim.opt.updatetime = 250
+
+-- Keep signcolumn on by default.
+vim.opt.signcolumn = "yes"
 
 -- Make help window to appear vertically.
 -- In Vim, help windows always split horizontally and there is no configuration
 -- option to make them split vertically.
-local help_group = vim.api.nvim_create_augroup('vimrc_help', { clear = true })
-vim.api.nvim_create_autocmd({ 'BufEnter' }, {
-  pattern = '*.txt',
-  group = help_group,
+vim.api.nvim_create_autocmd({ "BufEnter" }, {
+  desc = "Make a help window to appear vertically",
+  pattern = "*.txt",
+  group = vim.api.nvim_create_augroup("vimrc_help", { clear = true }),
   command = "if &buftype == 'help' | wincmd L | endif",
 })
 
+-- Highlight when yanking (copying) text.
+-- See `:help vim.highlight.on_yank()`.
+vim.api.nvim_create_autocmd({ "TextYankPost" }, {
+  desc = "Highlight when yanking (copying) text",
+  group = vim.api.nvim_create_augroup("highlight_yank", { clear = true }),
+  callback = function()
+    vim.highlight.on_yank()
+  end,
+})
