@@ -7,15 +7,44 @@ return {
     "MunifTanjim/nui.nvim",
     -- "3rd/image.nvim", -- Optional image support in preview window: See `# Preview Mode` for more information
   },
-  config = function()
-    require('neo-tree').setup({
-      filesystem = {
-        filtered_items = {
-          visible = true,
-        },
+  cmd = 'Neotree',
+  keys = {
+    {
+      '<Leader>fe',
+      ':Neotree left toggle reveal<CR>', 
+      desc = '[f]ile [e]xplorer',
+      mode = 'n',
+      silent = true,
+    },
+    {
+      '<Leader>e',
+      '<Leader>fe',
+      desc = '[f]ile [e]xplorer',
+      mode = 'n',
+      remap = true,
+      silent = true,
+    },
+    {
+      '<Leader>be',
+      ':Neotree left toggle buffers<CR>',
+      desc = '[b]uffer [e]xplorer',
+      mode = 'n',
+      silent = true,
+    },
+    {
+      '<Leader>ge',
+      ':Neotree left toggle git_status<CR>',
+      desc = '[g]it status [e]xplorer',
+      mode = 'n',
+      silent = true,
+    },
+  },
+  opts = {
+    filesystem = {
+      filtered_items = {
+        visible = true,
       },
-    })
-    vim.keymap.set('n', '<Leader>e', ':Neotree left toggle reveal<CR>', { silent = true })
-  end
+    },
+  },
 }
 
