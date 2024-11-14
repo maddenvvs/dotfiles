@@ -2,20 +2,21 @@ return {
   'nvim-orgmode/orgmode',
   event = 'VeryLazy',
   ft = { 'org' },
-  config = function()
-    require('orgmode').setup({
-      org_agenda_files = {
-        '~/orgs/**/*',
+  opts = {
+    org_agenda_files = {
+      '~/orgs/**/*',
+    },
+    win_split_mode = 'vertical',
+    org_capture_templates = {
+      t = {
+        description = 'Task',
+        template = '* TODO %?\n  %u\n',
+        target = '~/orgs/tasks.org',
       },
-      win_split_mode = 'vertical',
-      org_capture_templates = {
-        t = {
-          description = 'Task',
-          template = '* TODO %?\n  %u\n',
-          target = '~/orgs/tasks.org',
-        },
-      },
-    })
+    },
+  },
+  config = function(_, opts)
+    require('orgmode').setup(opts)
 
     -- NOTE: If you are using nvim-treesitter with ~ensure_installed = "all"~ option
     -- add ~org~ to ignore_install
