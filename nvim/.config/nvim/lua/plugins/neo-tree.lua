@@ -45,7 +45,7 @@ return {
         visible = true,
       },
     },
-    -- Fix issue with black borders with black color.
+    -- Fix issue with black borders/black color.
     -- https://github.com/nvim-neo-tree/neo-tree.nvim/issues/1480#issuecomment-2127093906
     popup_border_style = 'single',
   },
