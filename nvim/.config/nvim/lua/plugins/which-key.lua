@@ -24,5 +24,10 @@ return {
       { "g", group = "goto" },
       { "z", group = "fold" },
     },
+    -- Don't wait for a key to be pressed before showing the popup
+    -- (only used by enabled xo mapping modes).
+    defer = function()
+      return false
+    end,
   },
 }
