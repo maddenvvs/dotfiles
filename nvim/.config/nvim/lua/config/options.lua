@@ -103,6 +103,11 @@ vim.opt.updatetime = 250
 -- Keep signcolumn on by default.
 vim.opt.signcolumn = "yes"
 
+-- Hide tilda symbol (~) in the end of a buffer.
+vim.opt.fillchars = {
+  eob = " ",
+}
+
 -- Make help window to appear vertically.
 -- In Vim, help windows always split horizontally and there is no configuration
 -- option to make them split vertically.
