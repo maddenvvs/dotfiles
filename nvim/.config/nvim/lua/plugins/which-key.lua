@@ -19,6 +19,7 @@ return {
     spec = {
       mode = { 'n', 'v' },
       { '<Leader>h', group = 'git [h]unk' },
+      { '<Leader>o', group = '[o]rgmode' },
       { "[", group = "prev" },
       { "]", group = "next" },
       { "g", group = "goto" },
