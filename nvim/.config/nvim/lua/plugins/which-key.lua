@@ -20,10 +20,27 @@ return {
       mode = { "n", "v" },
       { "<Leader>h", group = "git [h]unk" },
       { "<Leader>o", group = "[o]rgmode" },
+      { "<Leader>u", group = "[u]i" },
+      { "<Leader>f", group = "[f]ile" },
+      { "<Leader>g", group = "[g]it" },
       { "[", group = "prev" },
       { "]", group = "next" },
       { "g", group = "goto" },
       { "z", group = "fold" },
+      {
+        "<Leader>b",
+        group = "[b]uffers",
+        expand = function()
+          return require("which-key.extras").expand.buf()
+        end,
+      },
+      {
+        "<C-w>",
+        group = "[w]indows",
+        expand = function()
+          return require("which-key.extras").expand.win()
+        end,
+      },
     },
     -- Don't wait for a key to be pressed before showing the popup
     -- (only used by enabled xo mapping modes).
