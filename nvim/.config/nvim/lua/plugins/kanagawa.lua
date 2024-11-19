@@ -6,4 +6,3 @@ return {
     require("kanagawa").load("wave")
   end,
 }
-

@@ -5,13 +5,12 @@ local function open_folder(path)
   end
 end
 
-
 return {
-  'nvimdev/dashboard-nvim',
+  "nvimdev/dashboard-nvim",
   dependencies = {
-    'nvim-tree/nvim-web-devicons'
+    "nvim-tree/nvim-web-devicons",
   },
-  event = 'VimEnter',
+  event = "VimEnter",
   opts = {
     theme = "hyper",
     shortcut_type = "letter",

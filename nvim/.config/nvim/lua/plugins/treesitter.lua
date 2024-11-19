@@ -2,7 +2,7 @@ return {
   {
     "nvim-treesitter/nvim-treesitter",
     build = ":TSUpdate",
-    config = function ()
+    config = function()
       local configs = require("nvim-treesitter.configs")
 
       configs.setup({
@@ -28,11 +28,11 @@ return {
             enable = true,
             goto_next_start = {
               ["]f"] = "@function.outer",
-              ["]a"] = "@parameter.inner"
+              ["]a"] = "@parameter.inner",
             },
             goto_next_end = {
               ["]F"] = "@function.outer",
-              ["]A"] = "@parameter.inner"
+              ["]A"] = "@parameter.inner",
             },
             goto_previous_start = {
               ["[f"] = "@function.outer",

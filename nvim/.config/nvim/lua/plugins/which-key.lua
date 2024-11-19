@@ -1,6 +1,6 @@
 return {
-  'folke/which-key.nvim',
-  event = 'VeryLazy',
+  "folke/which-key.nvim",
+  event = "VeryLazy",
   keys = {
     {
       "<Leader>?",
@@ -17,9 +17,9 @@ return {
     },
     preset = "helix",
     spec = {
-      mode = { 'n', 'v' },
-      { '<Leader>h', group = 'git [h]unk' },
-      { '<Leader>o', group = '[o]rgmode' },
+      mode = { "n", "v" },
+      { "<Leader>h", group = "git [h]unk" },
+      { "<Leader>o", group = "[o]rgmode" },
       { "[", group = "prev" },
       { "]", group = "next" },
       { "g", group = "goto" },
