@@ -29,7 +29,7 @@ return {
         else
           gs.nav_hunk("next")
         end
-      end, "next [c]hange")
+      end, "Goto next git [c]hange")
 
       map("n", "[c", function()
         if vim.wo.diff then
@@ -37,14 +37,14 @@ return {
         else
           gs.nav_hunk("prev")
         end
-      end, "previous [c]hange")
+      end, "Goto previous git [c]hange")
 
       map("n", "]C", function()
         gs.nav_hunk("last")
-      end, "last [C]hange")
+      end, "Goto last git [C]hange")
       map("n", "[C", function()
         gs.nav_hunk("first")
-      end, "first [C]hange")
+      end, "Goto first git [C]hange")
       map({ "n", "v" }, "<leader>hs", ":Gitsigns stage_hunk<CR>", "[h]unk [s]tage")
       map({ "n", "v" }, "<leader>hr", ":Gitsigns reset_hunk<CR>", "[h]unk [r]eset")
       map("n", "<leader>hS", gs.stage_buffer, "[S]tage buffer")
