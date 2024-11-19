@@ -99,7 +99,7 @@ fi
 export PATH="${HOME}/.local/bin:${PATH}"
 
 # The folder where dotfiles are stored.
-DOTFILES="${HOME}/.config/dotfiles"
+export DOTFILES="${HOME}/.config/dotfiles"
 
 # Generated with vivid (https://github.com/sharkdp/vivid).
 # export LS_COLORS='$(vivid generate snazzy)'
