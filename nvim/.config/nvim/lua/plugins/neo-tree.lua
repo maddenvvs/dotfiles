@@ -40,7 +40,15 @@ return {
     },
   },
   opts = {
+    -- Fix issue with black borders/black color.
+    -- https://github.com/nvim-neo-tree/neo-tree.nvim/issues/1480#issuecomment-2127093906
+    popup_border_style = "single",
     filesystem = {
+      bind_to_cwd = true,
+      cwd_target = {
+        sidebar = "global",
+        current = "global",
+      },
       filtered_items = {
         visible = true,
       },
@@ -48,11 +56,16 @@ return {
     window = {
       mappings = {
         -- Prevent mapping collision with existing <Leader> mappings.
-        ["<space>"] = "none",
+        ["<Space>"] = "none",
       },
     },
-    -- Fix issue with black borders/black color.
-    -- https://github.com/nvim-neo-tree/neo-tree.nvim/issues/1480#issuecomment-2127093906
-    popup_border_style = "single",
+    default_component_configs = {
+      indent = {
+        with_expanders = true,
+        expander_collapsed = "",
+        expander_expanded = "",
+        expander_highlight = "NeoTreeExpander",
+      },
+    },
   },
 }
