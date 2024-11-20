@@ -25,9 +25,6 @@ vim.opt.errorbells = false
 vim.opt.visualbell = false
 vim.opt.belloff = "all"
 
--- Add vertical line denoting 80 symbols border.
-vim.opt.colorcolumn = { 80 }
-
 -- Give some space around the cursor in both directions.
 vim.opt.scrolloff = 999
 vim.opt.sidescrolloff = 5
