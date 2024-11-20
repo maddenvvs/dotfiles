@@ -1,7 +1,9 @@
 local function open_folder(path)
   return function()
-    vim.cmd("cd " .. path)
-    vim.cmd("Neotree show focus")
+    vim.cmd.cd(path)
+    require("neo-tree.command").execute({
+      action = "focus",
+    })
   end
 end
 
