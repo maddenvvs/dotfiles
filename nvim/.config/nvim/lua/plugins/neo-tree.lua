@@ -72,6 +72,9 @@ return {
       filtered_items = {
         visible = true,
       },
+      follow_current_file = {
+        enabled = true,
+      },
     },
     window = {
       mappings = {
