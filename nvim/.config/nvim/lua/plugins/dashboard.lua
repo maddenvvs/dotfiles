@@ -25,7 +25,7 @@ return {
     config = {
       disable_move = true,
       week_header = { enable = true },
-      project = { enable = false },
+      project = { enable = true },
       packages = { enable = true },
       shortcut = {
         {
