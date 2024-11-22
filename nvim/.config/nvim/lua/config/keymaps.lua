@@ -27,7 +27,7 @@ vim.keymap.set("x", "K", ":m '<-2<CR>gv=gv", { desc = "Move up (stay visual)", s
 -- vim.keymap.set("n", "<C-L>", ":nohlsearch<C-R>=has('diff')?'<Bar>diffupdate':''<CR><CR><C-L>", { silent = true })
 vim.keymap.set(
   "n",
-  "<leader>ur",
+  "<leader>ul",
   "<Cmd>nohlsearch<Bar>diffupdate<Bar>normal! <C-L><CR>",
   { desc = "Redraw / Clear hlsearch / Diff Update", silent = true }
 )
