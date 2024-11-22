@@ -43,6 +43,26 @@ return {
     -- Fix issue with black borders/black color.
     -- https://github.com/nvim-neo-tree/neo-tree.nvim/issues/1480#issuecomment-2127093906
     popup_border_style = "single",
+    sources = {
+      "filesystem",
+      "git_status",
+      "buffers",
+      -- "document_symbols",
+    },
+    open_files_do_not_replace_types = {
+      "edgy",
+      "help",
+      "terminal",
+      "Trouble",
+      "qf",
+    },
+    source_selector = {
+      sources = {
+        { source = "filesystem" },
+        { source = "git_status" },
+        -- { source = "buffers" },
+      },
+    },
     filesystem = {
       bind_to_cwd = true,
       cwd_target = {
