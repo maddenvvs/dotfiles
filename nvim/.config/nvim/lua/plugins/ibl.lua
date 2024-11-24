@@ -7,7 +7,7 @@ return {
       tab_char = "│",
     },
     scope = {
-      char = "▍",
+      char = "┃",
       show_start = false,
       show_end = false,
       include = {
