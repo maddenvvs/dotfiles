@@ -2,11 +2,43 @@ return {
   "nvim-telescope/telescope.nvim",
   cmd = "Telescope",
   keys = {
-    { "<Leader>ff", "<Cmd>Telescope find_files<CR>", desc = "[f]ind files" },
-    { "<Leader>uc", "<Cmd>Telescope colorscheme enable_preview=true<CR>", desc = "[c]hange colorscheme" },
-    { "<Leader>/", "<Cmd>Telescope live_grep<CR>", desc = "grep cwd" },
-    { "<Leader>gs", "<cmd>Telescope git_status<CR>", desc = "git [s]tatus" },
-    { "<leader>sh", "<cmd>Telescope help_tags<cr>", desc = "[h]elp pages" },
+    {
+      "<Leader>ff",
+      "<Cmd>Telescope find_files<CR>",
+      desc = "find [f]iles",
+      silent = true,
+    },
+    {
+      "<Leader>p",
+      "<Leader>ff",
+      desc = "find [f]iles",
+      silent = true,
+      remap = true,
+    },
+    {
+      "<Leader>uc",
+      "<Cmd>Telescope colorscheme enable_preview=true<CR>",
+      desc = "change [c]olorscheme",
+      silent = true,
+    },
+    {
+      "<Leader>/",
+      "<Cmd>Telescope live_grep<CR>",
+      desc = "grep cwd",
+      silent = true,
+    },
+    {
+      "<Leader>gs",
+      "<cmd>Telescope git_status<CR>",
+      desc = "git [s]tatus",
+      silent = true,
+    },
+    {
+      "<leader>sh",
+      "<cmd>Telescope help_tags<cr>",
+      desc = "search [h]elp",
+      silent = true,
+    },
   },
   config = function()
     local telescope = require("telescope")
