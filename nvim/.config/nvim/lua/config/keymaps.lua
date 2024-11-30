@@ -32,6 +32,9 @@ vim.keymap.set(
   { desc = "Redraw / Clear hlsearch / Diff Update", silent = true }
 )
 
+-- Toggle showing unprintable characters.
+vim.keymap.set("n", "<Leader>us", "<Cmd>set list!<CR>", { desc = "show/hide [s]paces" })
+
 -- Nvim already redefines them the way below. There is no need to difine them again.
 -- See ':help default-mappings'.
 
