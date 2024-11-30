@@ -50,6 +50,7 @@ vim.opt.softtabstop = 0
 vim.opt.backup = false
 vim.opt.writebackup = false
 vim.opt.swapfile = false
+vim.opt.updatetime = 250
 vim.opt.undofile = true
 vim.opt.undodir = { vim.fn.expand("$HOME/.cache/nvim/undo") }
 
@@ -93,9 +94,6 @@ end)
 -- Decrease mapped sequence wait time.
 -- Displays which-key popup sooner.
 vim.opt.timeoutlen = 300
-
--- Decrease update time.
-vim.opt.updatetime = 250
 
 -- Keep signcolumn on by default.
 vim.opt.signcolumn = "yes"
