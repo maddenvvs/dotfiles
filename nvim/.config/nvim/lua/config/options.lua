@@ -70,7 +70,7 @@ vim.opt.splitright = true
 vim.opt.autoread = true
 
 -- Better display of non-printable characters.
-vim.opt.list = true
+vim.opt.list = false
 vim.opt.listchars = {
   tab = "» ",
   space = "·",
