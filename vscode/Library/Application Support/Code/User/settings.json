@@ -1,4 +1,5 @@
 {
+  "editor.accessibilitySupport": "off",
   "editor.fontFamily": "JetBrainsMonoNL Nerd Font Mono, Menlo, Monaco, 'Courier New', monospace",
   "editor.fontSize": 14,
   "editor.formatOnSave": true,
