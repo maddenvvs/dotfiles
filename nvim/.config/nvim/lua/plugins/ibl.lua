@@ -21,7 +21,6 @@ return {
     },
     exclude = {
       filetypes = {
-        "dashboard",
         "help",
         "neo-tree",
       },
