@@ -1,11 +1,3 @@
-# Enable Powerlevel10k instant prompt. Should stay close to the top of ~/.zshrc.
-# Initialization code that may require console input (password prompts, [y/n]
-# confirmations, etc.) must go above this block; everything else may go below.
-if [[ -r "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh" ]]; then
-  source "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh"
-fi
-
-
 ###############################################################################
 # Plugins
 ###############################################################################
@@ -30,12 +22,6 @@ autoload -Uz _zi
 # Add Meta Plugins Zi Annex.
 # https://wiki.zshell.dev/ecosystem/annexes/meta-plugins
 zi light z-shell/z-a-meta-plugins
-
-# Install Powerlevel10k theme.
-zi ice atinit'POWERLEVEL9K_DISABLE_CONFIGURATION_WIZARD=true' \
-       atload"[[ ! -f ${ZDOTDIR}/.p10k.zsh ]] || source ${ZDOTDIR}/.p10k.zsh" \
-       depth=1 nocd
-zi light romkatv/powerlevel10k
 
 # Add key bindings provided by fzf.
 zi ice has'fzf'
@@ -277,10 +263,20 @@ readonly _RUST_ENV="${HOME}/.cargo/env"
 
 
 ###############################################################################
+# Starship
+###############################################################################
+
+if command -v starship &>/dev/null ; then
+  export STARSHIP_CONFIG="${ZDOTDIR}/starship.toml"
+
+  eval "$(starship init zsh)"
+fi
+
+
+###############################################################################
 # Misc
 ###############################################################################
 
 # Load machine-specific zsh configuration.
 readonly ZSHRC_LOCAL="${ZDOTDIR}/.zshrc.local"
 [[ -f "${ZSHRC_LOCAL}" ]] && source "${ZSHRC_LOCAL}"
-
