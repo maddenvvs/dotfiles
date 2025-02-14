@@ -3,12 +3,8 @@
   "editor.accessibilitySupport": "off",
   "editor.copyWithSyntaxHighlighting": false,
   "editor.emptySelectionClipboard": false,
-  "editor.fontFamily": "JetBrainsMonoNL Nerd Font Mono, Menlo, Monaco, 'Courier New', monospace",
-  "editor.fontSize": 14,
   "editor.formatOnSave": true,
   "editor.guides.bracketPairs": "active",
-  "editor.guides.indentation": false,
-  "editor.minimap.enabled": false,
   "editor.renderWhitespace": "all",
   "editor.trimAutoWhitespace": false,
   "extensions.autoUpdate": false,
@@ -19,20 +15,37 @@
   "files.trimTrailingWhitespace": true,
   "telemetry.telemetryLevel": "off", // VSCode Core
   "terminal.external.osxExec": "Alacritty.app",
-  "terminal.integrated.fontSize": 14,
   "terminal.integrated.hideOnStartup": "always",
   "terminal.integrated.persistentSessionReviveProcess": "never",
   "update.mode": "default",
   "window.nativeFullScreen": false,
   "window.newWindowDimensions": "inherit",
   "window.zoomLevel": 1,
-  "workbench.colorTheme": "Monokai",
   "workbench.editor.enablePreview": false,
-  "workbench.editor.showTabs": "none",
   "workbench.enableExperiments": false,
-  "workbench.iconTheme": "material-icon-theme",
   "workbench.settings.enableNaturalLanguageSearch": false,
+  /*
+    Hide the things.
+  */
+  "editor.guides.indentation": false,
+  "editor.minimap.enabled": false,
+  "workbench.activityBar.location": "hidden",
+  "workbench.editor.showTabs": "none",
   "workbench.sideBar.location": "right",
+  /*
+    Silence the noise.
+  */
+  "breadcrumbs.enabled": false,
+  /*
+    Typography.
+  */
+  "editor.fontFamily": "JetBrainsMonoNL Nerd Font Mono, Menlo, Monaco, 'Courier New', monospace",
+  "editor.fontSize": 16,
+  "editor.lineHeight": 0,
+  "editor.suggestFontSize": 0,
+  "editor.suggestLineHeight": 0,
+  "terminal.integrated.fontSize": 16,
+  "workbench.colorTheme": "Monokai",
   /*
     Python-specific configuration.
   */
@@ -86,6 +99,7 @@
   /*
     Material Icon extension.
   */
+  "workbench.iconTheme": "material-icon-theme",
   "material-icon-theme.activeIconPack": "none",
   "material-icon-theme.folders.theme": "classic"
 }
