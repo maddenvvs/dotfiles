@@ -21,4 +21,3 @@ fi
 # Load machine-specific configuration.
 readonly ZSHENV_LOCAL="${ZDOTDIR}/.zshenv.local"
 [[ -f "${ZSHENV_LOCAL}" ]] && source "${ZSHENV_LOCAL}"
-

@@ -16,4 +16,3 @@ readonly PACKAGES=(\
 
 # Install all stow packages.
 stow --no-folding -v -t "${HOME}" -d "${DOTFILES}" -R "${PACKAGES[@]}"
-
