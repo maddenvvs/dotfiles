@@ -14,9 +14,6 @@
   "files.trimFinalNewlines": true,
   "files.trimTrailingWhitespace": true,
   "telemetry.telemetryLevel": "off", // VSCode Core
-  "terminal.external.osxExec": "Alacritty.app",
-  "terminal.integrated.hideOnStartup": "always",
-  "terminal.integrated.persistentSessionReviveProcess": "never",
   "update.mode": "default",
   "window.nativeFullScreen": false,
   "window.newWindowDimensions": "inherit",
@@ -46,6 +43,12 @@
   "editor.suggestLineHeight": 0,
   "terminal.integrated.fontSize": 16,
   "workbench.colorTheme": "Monokai",
+  /*
+    Intergrated terminal.
+  */
+  "terminal.external.osxExec": "Alacritty.app",
+  "terminal.integrated.hideOnStartup": "always",
+  "terminal.integrated.persistentSessionReviveProcess": "never",
   /*
     Python-specific configuration.
   */
