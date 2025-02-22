@@ -22,8 +22,8 @@ return {
           { icon = " ", key = "g", desc = "Find Text", action = ":lua Snacks.dashboard.pick('live_grep')" },
           {
             icon = " ",
-            key = "c",
-            desc = "Config",
+            key = "d",
+            desc = "Dotfiles",
             action = ":lua Snacks.dashboard.pick('files', {cwd = '$DOTFILES'})",
           },
           {
