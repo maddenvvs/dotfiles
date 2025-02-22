@@ -26,8 +26,10 @@
   */
   "editor.guides.indentation": false,
   "editor.minimap.enabled": false,
+  "window.customTitleBarVisibility": "never",
+  "window.titleBarStyle": "native",
   "workbench.activityBar.location": "hidden",
-  "workbench.editor.showTabs": "none",
+  "workbench.editor.showTabs": "single",
   "workbench.sideBar.location": "right",
   /*
     Silence the noise.
