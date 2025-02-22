@@ -42,7 +42,13 @@
   "editor.suggestFontSize": 0,
   "editor.suggestLineHeight": 0,
   "terminal.integrated.fontSize": 16,
+  /*
+    Color schemes.
+  */
+  "workbench.preferredLightColorTheme": "Solarized Light",
+  "workbench.preferredDarkColorTheme": "Monokai",
   "workbench.colorTheme": "Monokai",
+  "window.autoDetectColorScheme": false,
   /*
     Intergrated terminal.
   */
