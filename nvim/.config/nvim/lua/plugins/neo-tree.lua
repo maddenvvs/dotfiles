@@ -11,7 +11,7 @@ return {
   keys = {
     {
       "<Leader>fe",
-      ":Neotree left toggle reveal<CR>",
+      ":Neotree right toggle reveal<CR>",
       desc = "[f]ile [e]xplorer",
       mode = "n",
       silent = true,
@@ -26,14 +26,14 @@ return {
     },
     {
       "<Leader>be",
-      ":Neotree left toggle buffers<CR>",
+      ":Neotree right toggle buffers<CR>",
       desc = "[b]uffer [e]xplorer",
       mode = "n",
       silent = true,
     },
     {
       "<Leader>ge",
-      ":Neotree left toggle git_status<CR>",
+      ":Neotree right toggle git_status<CR>",
       desc = "[g]it status [e]xplorer",
       mode = "n",
       silent = true,
