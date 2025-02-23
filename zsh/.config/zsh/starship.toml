@@ -11,7 +11,6 @@ command_timeout = 500
 
 # Gruvbox Rainbow Preset: https://starship.rs/presets/gruvbox-rainbow
 format = """
-[](color_orange)\
 $username\
 $hostname\
 [](bg:color_yellow fg:color_orange)\
@@ -25,7 +24,7 @@ $python\
 $docker_context\
 [](fg:color_bg3 bg:color_bg1)\
 $time\
-[ ](fg:color_bg1)\
+[](fg:color_bg1)\
 $line_break$character"""
 
 palette = 'gruvbox_dark'
