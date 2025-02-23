@@ -1,16 +1,16 @@
--- Set leader key.
+-- Set the leader key.
 vim.g.mapleader = " "
 
--- Set local leader key.
+-- Set the local leader key.
 vim.g.maplocalleader = " "
 
--- Move to window using the <Ctrl>+[hjkl] keys.
+-- Move between windows using <Ctrl>+[hjkl] keys.
 vim.keymap.set("n", "<C-h>", "<C-w>h", { desc = "Go to left window", silent = true, remap = true })
 vim.keymap.set("n", "<C-j>", "<C-w>j", { desc = "Go to lower window", silent = true, remap = true })
 vim.keymap.set("n", "<C-k>", "<C-w>k", { desc = "Go to upper window", silent = true, remap = true })
 vim.keymap.set("n", "<C-l>", "<C-w>l", { desc = "Go to right window", silent = true, remap = true })
 
--- Save a buffer both in without leaving the current mode.
+-- Save current buffer without leaving the current mode.
 vim.keymap.set({ "i", "n", "v" }, "<C-S>", "<Cmd>write<CR>", { desc = "Save buffer", silent = true })
 
 -- Maintain Visual Mode after shifting > and <.
@@ -35,8 +35,7 @@ vim.keymap.set(
 -- Toggle showing unprintable characters.
 vim.keymap.set("n", "<Leader>us", "<Cmd>set list!<CR>", { desc = "show/hide [s]paces" })
 
--- Nvim already redefines them the way below. There is no need to difine them again.
--- See ':help default-mappings'.
+-- Neovim already redefined the following. See ':help default-mappings'.
 
 -- Make Y behave like C and D (do operation from the cursor to the end of line).
 -- vim.keymap.set("n", "Y", "y$", { silent = true })
