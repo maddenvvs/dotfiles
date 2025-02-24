@@ -12,4 +12,138 @@
         "command": "editor.action.triggerSuggest",
         "when": "editorHasCompletionItemProvider && textInputFocus && !editorReadonly && !suggestWidgetVisible"
     },
+    // Action bar hotkeys instead of the default ones.
+    {
+        "key": "cmd+k e",
+        "command": "workbench.view.explorer",
+    },
+    {
+        "key": "cmd+k g",
+        "command": "workbench.view.scm",
+    },
+    {
+        "key": "cmd+k x",
+        "command": "workbench.view.extensions",
+    },
+    {
+        "key": "cmd+k b",
+        "command": "workbench.action.toggleSidebarVisibility",
+    },
+    // File explorer.
+    {
+        "key": "cmd+r",
+        "command": "workbench.files.action.refreshFilesExplorer",
+        "when": "explorerViewletVisible && filesExplorerFocus && !inputFocus"
+    },
+    // Multi-curson.
+    {
+        "key": "cmd+k cmd+d",
+        "command": "editor.action.moveSelectionToNextFindMatch",
+        "when": "editorFocus && editorHasMultipleSelections",
+    },
+    {
+        "key": "cmd+shift+d",
+        "command": "editor.action.moveSelectionToPreviousFindMatch",
+        "when": "editorFocus && editorHasMultipleSelections",
+    },
+    // Editor panels.
+    {
+        "key": "ctrl+w \\",
+        "command": "workbench.action.splitEditor",
+        "when": "editorFocus",
+    },
+    {
+        "key": "ctrl+w c",
+        "command": "workbench.action.joinAllGroups",
+        "when": "editorFocus",
+    },
+    {
+        "key": "ctrl+w h",
+        "command": "workbench.action.navigateLeft",
+        "when": "editorFocus",
+    },
+    {
+        "key": "ctrl+w l",
+        "command": "workbench.action.navigateRight",
+        "when": "editorFocus",
+    },
+    {
+        "key": "ctrl+w =",
+        "command": "workbench.action.increaseViewSize",
+        "when": "editorFocus",
+    },
+    {
+        "key": "ctrl+w -",
+        "command": "workbench.action.decreaseViewSize",
+        "when": "editorFocus",
+    },
+    // Terminal panels.
+    {
+        "key": "ctrl+w \\",
+        "command": "workbench.action.terminal.split",
+        "when": "terminalFocus",
+    },
+    {
+        "key": "ctrl+w c",
+        "command": "workbench.action.terminal.kill",
+        "when": "terminalFocus",
+    },
+    {
+        "key": "ctrl+w h",
+        "command": "workbench.action.terminal.focusPreviousPane",
+        "when": "terminalFocus",
+    },
+    {
+        "key": "ctrl+w l",
+        "command": "workbench.action.terminal.focusNextPane",
+        "when": "terminalFocus",
+    },
+    {
+        "key": "ctrl+w ,",
+        "command": "workbench.action.terminal.resizePaneLeft",
+        "when": "terminalFocus",
+    },
+    {
+        "key": "ctrl+w .",
+        "command": "workbench.action.terminal.resizePaneRight",
+        "when": "terminalFocus",
+    },
+    // Color schemes.
+    {
+        "key": "cmd+k t",
+        "command": "workbench.action.toggleLightDarkThemes",
+    },
+    // amVim.
+    {
+        "key": "ctrl+d",
+        "command": "editorScroll",
+        "args": {
+            "to": "down",
+            "by": "halfPage",
+            "revealCursor": true,
+            "value": 1
+        },
+        "when": "editorTextFocus && amVim.mode == 'NORMAL' && !amVim.waitingForInput"
+    },
+    {
+        "key": "ctrl+u",
+        "command": "editorScroll",
+        "args": {
+            "to": "up",
+            "by": "halfPage",
+            "revealCursor": true,
+            "value": 1
+        },
+        "when": "editorTextFocus && amVim.mode == 'NORMAL' && !amVim.waitingForInput"
+    },
+    {
+        "key": "ctrl+s",
+        "command": "workbench.action.files.save",
+        "when": "editorTextFocus"
+    },
+    // Workspaces.
+    {
+        "key": "cmd+k r",
+        "command": "workbench.action.openRecent",
+    }
 ]
