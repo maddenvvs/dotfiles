@@ -30,7 +30,7 @@
   "window.customTitleBarVisibility": "never",
   "window.titleBarStyle": "native",
   "workbench.activityBar.location": "hidden",
-  "workbench.editor.showTabs": "single",
+  "workbench.editor.showTabs": "multiple",
   "workbench.sideBar.location": "right",
   /*
     Silence the noise.
