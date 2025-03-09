@@ -14,7 +14,7 @@
   "files.insertFinalNewline": true,
   "files.trimFinalNewlines": true,
   "files.trimTrailingWhitespace": true,
-  "telemetry.telemetryLevel": "off", // VSCode Core
+  "telemetry.telemetryLevel": "off",
   "update.mode": "default",
   "window.nativeFullScreen": false,
   "window.newWindowDimensions": "inherit",
@@ -45,13 +45,6 @@
   "editor.suggestFontSize": 0,
   "editor.suggestLineHeight": 0,
   "terminal.integrated.fontSize": 16,
-  /*
-    Color schemes.
-  */
-  "workbench.preferredLightColorTheme": "Solarized Light",
-  "workbench.preferredDarkColorTheme": "Monokai",
-  "workbench.colorTheme": "Monokai",
-  "window.autoDetectColorScheme": false,
   /*
     Intergrated terminal.
   */
@@ -118,4 +111,11 @@
     amVim.
   */
   "amVim.useSystemClipboard": true,
+  /*
+    Color schemes.
+  */
+  "workbench.preferredLightColorTheme": "Solarized Light",
+  "workbench.preferredDarkColorTheme": "Monokai",
+  "window.autoDetectColorScheme": false,
+  "workbench.colorTheme": "Noctis Minimus",
 }
