@@ -204,6 +204,26 @@
         "command": "workbench.action.files.save",
         "when": "editorTextFocus"
     },
+    {
+        "key": "ctrl+o",
+        "command": "workbench.action.navigateBack",
+        "when": "canNavigateBack && amVim.mode == 'NORMAL' && !amVim.waitingForInput",
+    },
+    {
+        "key": "ctrl+i",
+        "command": "workbench.action.navigateForward",
+        "when": "canNavigateForward && amVim.mode == 'NORMAL' && !amVim.waitingForInput",
+    },
+    {
+        "key": "cmd+k p",
+        "command": "editor.action.marker.next",
+        "when": "editorTextFocus && amVim.mode == 'NORMAL' && !amVim.waitingForInput",
+    },
+    {
+        "key": "cmd+k shift+p",
+        "command": "editor.action.marker.prev",
+        "when": "editorTextFocus && amVim.mode == 'NORMAL' && !amVim.waitingForInput",
+    },
     // Workspaces.
     {
         "key": "cmd+k r",
