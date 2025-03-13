@@ -54,34 +54,15 @@
   /*
     Python-specific configuration.
   */
-  "isort.args": [
-    "--profile",
-    "black"
-  ],
   "python.analysis.typeCheckingMode": "strict",
   "mypy.runUsingActiveInterpreter": true,
   "[python]": {
-    "editor.defaultFormatter": "ms-python.black-formatter",
+    "editor.defaultFormatter": "charliermarsh.ruff",
     "editor.codeActionsOnSave": {
-      "source.organizeImports": "always"
+      "source.fixAll": "explicit",
+      "source.organizeImports": "explicit",
     },
   },
-  /*
-    Terraform Extension configuration (as recommended by the extension documentation).
-  */
-  "[terraform]": {
-    "editor.defaultFormatter": "hashicorp.terraform",
-    "editor.formatOnSave": true,
-    "editor.formatOnSaveMode": "file"
-  },
-  "[terraform-vars]": {
-    "editor.defaultFormatter": "hashicorp.terraform",
-    "editor.formatOnSave": true,
-    "editor.formatOnSaveMode": "file"
-  },
-  // Display reference counts above top level blocks and attributes.
-  "terraform.codelens.referenceCount": true,
-  "terraform.experimentalFeatures.validateOnSave": true,
   /*
     indent-rainbow extension.
   */
