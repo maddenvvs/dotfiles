@@ -55,7 +55,6 @@
     Python-specific configuration.
   */
   "python.analysis.typeCheckingMode": "strict",
-  "mypy.runUsingActiveInterpreter": true,
   "[python]": {
     "editor.defaultFormatter": "charliermarsh.ruff",
     "editor.codeActionsOnSave": {
