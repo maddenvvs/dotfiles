@@ -2,6 +2,7 @@
   "diffEditor.ignoreTrimWhitespace": false,
   "editor.accessibilitySupport": "off",
   "editor.copyWithSyntaxHighlighting": false,
+  "editor.cursorSurroundingLines": 9999,
   "editor.emptySelectionClipboard": false,
   "editor.formatOnSave": true,
   "editor.guides.bracketPairs": "active",
