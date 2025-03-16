@@ -7,7 +7,12 @@ return {
 
       configs.setup({
         ensure_installed = {
+          "json",
+          "jsonc",
           "lua",
+          "markdown",
+          "markdown_inline",
+          "python",
           "vimdoc",
         },
         sync_install = false,
