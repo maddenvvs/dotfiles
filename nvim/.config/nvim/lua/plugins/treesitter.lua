@@ -60,11 +60,13 @@ return {
   },
   {
     "nvim-treesitter/nvim-treesitter-textobjects",
+    dependencies = {
+      "nvim-treesitter/nvim-treesitter",
+    },
     config = function()
-        -- If treesitter is already loaded, we need to run config again for textobjects.
         if DTF.is_loaded("nvim-treesitter") then
             local opts = DTF.opts("nvim-treesitter")
-            require("nvim-treesitter.configs").setup({ textobjects = opts.textobjects })
+            require("nvim-treesitter.configs").setup(opts)
         end
     end,
   },
