@@ -93,6 +93,12 @@
   */
   "amVim.useSystemClipboard": true,
   /*
+    Neovim.
+  */
+  "extensions.experimental.affinity": {
+    "asvetliakov.vscode-neovim": 1
+  },
+  /*
     Color schemes.
   */
   "workbench.preferredLightColorTheme": "Solarized Light",

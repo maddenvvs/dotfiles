@@ -64,37 +64,6 @@
         "command": "editor.action.moveSelectionToPreviousFindMatch",
         "when": "editorFocus && editorHasMultipleSelections",
     },
-    // Editor panels.
-    {
-        "key": "ctrl+w \\",
-        "command": "workbench.action.splitEditor",
-        "when": "editorFocus",
-    },
-    {
-        "key": "ctrl+w c",
-        "command": "workbench.action.joinAllGroups",
-        "when": "editorFocus",
-    },
-    {
-        "key": "ctrl+w h",
-        "command": "workbench.action.navigateLeft",
-        "when": "editorFocus",
-    },
-    {
-        "key": "ctrl+w l",
-        "command": "workbench.action.navigateRight",
-        "when": "editorFocus",
-    },
-    {
-        "key": "ctrl+w =",
-        "command": "workbench.action.increaseViewSize",
-        "when": "editorFocus",
-    },
-    {
-        "key": "ctrl+w -",
-        "command": "workbench.action.decreaseViewSize",
-        "when": "editorFocus",
-    },
     // Terminal panels.
     {
         "key": "ctrl+w \\",
@@ -131,99 +100,6 @@
         "key": "cmd+k t",
         "command": "workbench.action.toggleLightDarkThemes",
     },
-    // amVim.
-    {
-        "key": "ctrl+d",
-        "command": "editorScroll",
-        "args": {
-            "to": "down",
-            "by": "halfPage",
-            "revealCursor": true,
-            "value": 1
-        },
-        "when": "editorTextFocus && amVim.mode == 'NORMAL' && !amVim.waitingForInput"
-    },
-    {
-        "key": "ctrl+u",
-        "command": "editorScroll",
-        "args": {
-            "to": "up",
-            "by": "halfPage",
-            "revealCursor": true,
-            "value": 1
-        },
-        "when": "editorTextFocus && amVim.mode == 'NORMAL' && !amVim.waitingForInput"
-    },
-    // Redefine "o" and "O" commands in amVim.
-    // The problem with the original implementaion is that it incorrectly
-    // positions the cursor after switching to INSERT mode.
-    {
-        "key": "o",
-        "command": "runCommands",
-        "args": {
-            "commands": [
-                "editor.action.insertLineAfter",
-                {
-                    "command": "type",
-                    "args": {
-                        "text": "A",
-                    },
-                },
-            ]
-        },
-        "when": "editorTextFocus && amVim.mode == 'NORMAL' && !amVim.waitingForInput"
-    },
-    {
-        "key": "shift+o",
-        "command": "runCommands",
-        "args": {
-            "commands": [
-                "editor.action.insertLineBefore",
-                {
-                    "command": "type",
-                    "args": {
-                        "text": "A",
-                    },
-                },
-            ]
-        },
-        "when": "editorTextFocus && amVim.mode == 'NORMAL' && !amVim.waitingForInput"
-    },
-    {
-        "key": "shift+l",
-        "command": "workbench.action.nextEditorInGroup",
-        "when": "editorTextFocus && amVim.mode == 'NORMAL' && !amVim.waitingForInput"
-    },
-    {
-        "key": "shift+h",
-        "command": "workbench.action.previousEditorInGroup",
-        "when": "editorTextFocus && amVim.mode == 'NORMAL' && !amVim.waitingForInput"
-    },
-    {
-        "key": "ctrl+s",
-        "command": "workbench.action.files.save",
-        "when": "editorTextFocus"
-    },
-    {
-        "key": "ctrl+o",
-        "command": "workbench.action.navigateBack",
-        "when": "canNavigateBack && amVim.mode == 'NORMAL' && !amVim.waitingForInput",
-    },
-    {
-        "key": "ctrl+i",
-        "command": "workbench.action.navigateForward",
-        "when": "canNavigateForward && amVim.mode == 'NORMAL' && !amVim.waitingForInput",
-    },
-    {
-        "key": "cmd+k p",
-        "command": "editor.action.marker.next",
-        "when": "editorTextFocus && amVim.mode == 'NORMAL' && !amVim.waitingForInput",
-    },
-    {
-        "key": "cmd+k shift+p",
-        "command": "editor.action.marker.prev",
-        "when": "editorTextFocus && amVim.mode == 'NORMAL' && !amVim.waitingForInput",
-    },
     // Workspaces.
     {
         "key": "cmd+k r",
@@ -239,61 +115,23 @@
         "command": "workbench.action.showAllSymbols",
     },
     {
-        "key": "cmd+k i",
-        "command": "editor.action.showHover",
-        "when": "editorTextFocus",
-        "args": {
-            "focus": "autoFocusImmediately",
-        }
-    },
-    {
-        "key": "j",
-        "command": "editor.action.scrollDownHover",
-        "when": "editorHoverFocused",
-    },
-    {
-        "key": "k",
-        "command": "editor.action.scrollUpHover",
-        "when": "editorHoverFocused",
-    },
-    {
-        "key": "l",
-        "command": "editor.action.scrollRightHover",
-        "when": "editorHoverFocused",
-    },
-    {
-        "key": "h",
-        "command": "editor.action.scrollLeftHover",
-        "when": "editorHoverFocused",
-    },
-    {
-        "key": "ctrl+d",
-        "command": "editor.action.pageDownHover",
-        "when": "editorHoverFocused",
-    },
-    {
-        "key": "ctrl+u",
-        "command": "editor.action.pageUpHover",
-        "when": "editorHoverFocused",
-    },
-    {
-        "key": "g",
-        "command": "editor.action.goToTopHover",
-        "when": "editorHoverFocused",
-    },
-    {
-        "key": "shift+g",
-        "command": "editor.action.goToBottomHover",
-        "when": "editorHoverFocused",
-    },
-    {
-        "key": "q",
-        "command": "editor.action.hideHover",
-        "when": "editorHoverFocused",
-    },
-    {
         "key": "cmd+g d",
         "command": "editor.action.revealDefinition",
         "when": "editorHasDefinitionProvider && editorTextFocus",
+    },
+    // Neovim.
+    // Pass Ctrl+s command to save the current buffer.
+    {
+        "command": "vscode-neovim.send",
+        "key": "ctrl+s",
+        "when": "editorTextFocus",
+        "args": "<C-S>",
+    },
+    // nvim-treesitter incremental selection.
+    {
+        "command": "vscode-neovim.send",
+        "key": "ctrl+space",
+        "when": "editorTextFocus && (neovim.mode == normal || neovim.mode == visual)",
+        "args": "<C-Space>",
     },
 ]
