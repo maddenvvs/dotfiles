@@ -10,6 +10,7 @@ return {
         "markdown",
         "markdown_inline",
         "python",
+        "rust",
         "vimdoc",
       },
       sync_install = false,
