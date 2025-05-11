@@ -261,6 +261,12 @@ fi
 readonly _RUST_ENV="${HOME}/.cargo/env"
 [[ -f "${_RUST_ENV}" ]] && source "${_RUST_ENV}"
 
+# `rustup` is installed via Homebrew.
+# Reference it's binary folder to access rustc/clippy/etc.
+if [[ -d "/opt/homebrew/opt/rustup/bin" ]]; then
+  export PATH="/opt/homebrew/opt/rustup/bin:$PATH"
+fi
+
 
 ###############################################################################
 # Starship

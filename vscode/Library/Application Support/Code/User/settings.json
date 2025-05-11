@@ -64,6 +64,10 @@
     },
   },
   /*
+    Rust-specific configuration.
+  */
+  "rust-analyzer.check.command": "clippy",
+  /*
     indent-rainbow extension.
   */
   // Defining custom colors instead of default "Rainbow" for dark backgrounds.
