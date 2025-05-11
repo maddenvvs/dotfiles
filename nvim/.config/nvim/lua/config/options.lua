@@ -91,8 +91,8 @@ vim.schedule(function()
   vim.opt.clipboard = { "unnamed", "unnamedplus" }
 end)
 
--- Decrease mapped sequence wait time.
--- Displays which-key popup sooner.
+-- Change mapped sequence wait time.
+-- `which-key` popup's showing delay depends on this value.
 vim.opt.timeoutlen = 300
 
 -- Keep signcolumn on by default.
