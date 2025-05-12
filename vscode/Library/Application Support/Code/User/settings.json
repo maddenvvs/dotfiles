@@ -15,6 +15,7 @@
   "files.insertFinalNewline": true,
   "files.trimFinalNewlines": true,
   "files.trimTrailingWhitespace": true,
+  "telemetry.feedback.enabled": false,
   "telemetry.telemetryLevel": "off",
   "update.mode": "default",
   "window.nativeFullScreen": false,
@@ -52,6 +53,18 @@
   "terminal.external.osxExec": "Alacritty.app",
   "terminal.integrated.hideOnStartup": "always",
   "terminal.integrated.persistentSessionReviveProcess": "never",
+  /*
+    Disable all AI.
+  */
+  "chat.agent.enabled": false,
+  "chat.commandCenter.enabled": false,
+  "chat.detectParticipant.enabled": false,
+  "chat.extensionTools.enabled": false,
+  "chat.edits2.enabled": false,
+  "inlineChat.lineNaturalLanguageHint": false,
+  "inlineChat.lineEmptyHint": false,
+  "terminal.integrated.initialHint": false,
+  "workbench.editor.empty.hint": "hidden",
   /*
     Python-specific configuration.
   */
