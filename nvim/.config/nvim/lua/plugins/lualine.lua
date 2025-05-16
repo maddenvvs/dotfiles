@@ -15,6 +15,9 @@ return {
   opts = {
     options = {
       globalstatus = true,
+      disabled_filetypes = {
+        statusline = { "snacks_dashboard" },
+      },
     },
     sections = {
       lualine_c = { "filename", keymap },
