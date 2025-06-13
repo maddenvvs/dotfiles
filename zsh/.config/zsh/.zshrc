@@ -192,7 +192,7 @@ else
 fi
 
 # Show disk usage of a current directory.
-alias duc='du --human-readable --max-depth=1 | sort --human-numeric-sort --reverse'
+alias duc='du --human-readable --max-depth=1 --all | sort --human-numeric-sort --reverse'
 
 # Move to dotfiles directory.
 alias dtf="cd ${DOTFILES}"
