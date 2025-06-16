@@ -3,21 +3,14 @@
 # .zshenv' should not contain commands that produce output or assume the shell is attached to a tty.
 
 # The folder to search for shell startup files.
-export ZDOTDIR="${ZDOTDIR:-${HOME}/.config/zsh}"
+export ZDOTDIR="${HOME}/.config/zsh"
 
-# Preferred editor for local and remote sessions.
-export EDITOR='vim'
-export VISUAL='vim'
-
-# Homebrew configuration.
-if [[ -x /opt/homebrew/bin/brew ]]; then
-  # Export modified by Homebrew environment variables: $PATH, $MANPATH, ...
-  eval $(/opt/homebrew/bin/brew shellenv zsh)
-
-  # Disable Homebrew analytics collection (https://docs.brew.sh/Analytics).
-  export HOMEBREW_NO_ANALYTICS=1
-fi
+# Source .zshenv from ZDOTDIR folder.
+# This enables reuse of zsh configuration among shells with no ZDOTDIR specified
+# and shells with ZDOTDIR already pointing to proper location specified above.
+readonly ZSHENV="${ZDOTDIR}/.zshenv"
+[[ -f "${ZSHENV}" ]] && source "${ZSHENV}"
 
 # Load machine-specific configuration.
-readonly ZSHENV_LOCAL="${ZDOTDIR}/.zshenv.local"
+readonly ZSHENV_LOCAL="${HOME}/.zshenv.local"
 [[ -f "${ZSHENV_LOCAL}" ]] && source "${ZSHENV_LOCAL}"
