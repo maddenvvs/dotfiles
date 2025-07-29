@@ -61,6 +61,7 @@
   "chat.detectParticipant.enabled": false,
   "chat.extensionTools.enabled": false,
   "chat.edits2.enabled": false,
+  "inlineChat.accessibleDiffView": "off",
   "inlineChat.lineNaturalLanguageHint": false,
   "inlineChat.lineEmptyHint": false,
   "terminal.integrated.initialHint": false,
