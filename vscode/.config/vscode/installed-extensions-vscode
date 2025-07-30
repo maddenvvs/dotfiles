@@ -2,10 +2,9 @@ asvetliakov.vscode-neovim
 charliermarsh.ruff
 davidanson.vscode-markdownlint
 editorconfig.editorconfig
-ms-python.debugpy
 ms-python.python
 ms-python.vscode-pylance
-ms-vscode-remote.remote-containers
+ms-python.vscode-python-envs
 oderwat.indent-rainbow
 pkief.material-icon-theme
 rust-lang.rust-analyzer
