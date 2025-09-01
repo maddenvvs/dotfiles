@@ -57,10 +57,12 @@
     Disable all AI.
   */
   "chat.agent.enabled": false,
+  "chat.checkpoints.enabled": false,
   "chat.commandCenter.enabled": false,
   "chat.detectParticipant.enabled": false,
   "chat.extensionTools.enabled": false,
   "chat.edits2.enabled": false,
+  "editor.aiStats.enabled": false,
   "inlineChat.accessibleDiffView": "off",
   "inlineChat.lineNaturalLanguageHint": false,
   "inlineChat.lineEmptyHint": false,
