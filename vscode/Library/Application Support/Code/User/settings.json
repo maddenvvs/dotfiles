@@ -20,7 +20,7 @@
   "update.mode": "default",
   "window.nativeFullScreen": false,
   "window.newWindowDimensions": "inherit",
-  "window.zoomLevel": 1,
+  "window.zoomLevel": 1.5,
   "workbench.editor.enablePreview": false,
   "workbench.enableExperiments": false,
   "workbench.settings.enableNaturalLanguageSearch": false,
