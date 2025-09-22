@@ -40,6 +40,9 @@
 [merge]
 	tool = vimdiff
 
+[transfer]
+	fsckObjects = true
+
 # Allow machine-specific overrides.
 [include]
 	path = config.local
