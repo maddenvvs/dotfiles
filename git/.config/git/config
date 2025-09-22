@@ -20,6 +20,10 @@
 	# template = commit_template
 	verbose = true
 
+[core]
+	# Global .gitignore.
+	excludesFile = ~/.config/git/ignore
+
 # Allow vimdiff to be default difftool.
 [diff]
 	tool = vimdiff
