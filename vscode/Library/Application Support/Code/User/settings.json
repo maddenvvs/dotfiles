@@ -120,5 +120,5 @@
   "workbench.preferredLightColorTheme": "Solarized Light",
   "workbench.preferredDarkColorTheme": "Monokai",
   "window.autoDetectColorScheme": false,
-  "workbench.colorTheme": "Noctis Minimus",
+  "workbench.colorTheme": "Monokai",
 }
