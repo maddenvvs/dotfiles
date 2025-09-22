@@ -121,4 +121,11 @@
   "workbench.preferredDarkColorTheme": "Monokai",
   "window.autoDetectColorScheme": false,
   "workbench.colorTheme": "Monokai",
+  /*
+    Git.
+  */
+  "git.blame.editorDecoration.enabled": true,
+  "git.blame.editorDecoration.template": "${subject}, ${authorName} (${authorDateAgo})",
+  "git.blame.statusBarItem.enabled": true,
+  "git.blame.statusBarItem.template": "${authorName} (${authorDateAgo})",
 }
