@@ -2,6 +2,9 @@
 	name = maddenvvs
 	email = maddenvvs@gmail.com
 
+	# Don't guess user.name and user.email, depend only on config.
+	useConfigOnly = true
+
 [alias]
 	st = status
 	dt = difftool
