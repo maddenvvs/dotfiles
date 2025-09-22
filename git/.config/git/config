@@ -28,6 +28,10 @@
 [diff]
 	tool = vimdiff
 
+[difftool]
+	prompt = false
+	trustExitCode = true
+
 [fetch]
 	# Maintain 1=1 mapping to remote refs.
 	prune = true
@@ -35,10 +39,6 @@
 
 [merge]
 	tool = vimdiff
-
-[difftool]
-	prompt = false
-	trustExitCode = true
 
 # Allow machine-specific overrides.
 [include]
