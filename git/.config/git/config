@@ -6,6 +6,10 @@
 	useConfigOnly = true
 
 [alias]
+	a = add
+	ap = add --patch
+	ae = add --edit
+
 	st = status
 	dt = difftool
 
